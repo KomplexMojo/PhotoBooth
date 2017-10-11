@@ -25,24 +25,32 @@
 
 # import the library
 from appJar import gui
-from PhotoBooth import PhotoBooth
+from picamera import PiCamera
+from time import sleep
+from validate_email import validate_email
 
-booth = PhotoBooth(eml,true, false, false)
+#handle button events.
+def reset(button):
+    app.setFocus("Email:")
+    app.setEntry("Email:", "", callFunction=False)
 
-# handle button events
-def press(button):
-    if button == "Reset":
-        app.setFocus("Email:")
-        app.setEntry("Email:", "", callFunction=False)
-        #app.stop()
-    else:
-        eml = app.getEntry("Email:")
-        if booth.validateEmail(eml) is False:
-            print("email is invalid")
+def confirm(button):
+    eml=app.getEntry("Email:")
+    is_valid = validate_email(eml)
+    print (is_valid)
+    
+def picture(button):
+    with PiCamera() as camera:
+        camera.resolution = (1920,1080)
+        camera.image_effect = 'none'
+        camera.start_preview()
+        # Camera warm-up time
+        sleep(2)
+        camera.capture('/home/pi/Pictures/test.jpg') 
+        camera.stop_preview()		
 
-  
 # create a GUI variable called app
-app = gui("Login Window", "640x480")
+app = gui("Login Window", "1024x600")
 app.setBg("grey")
 app.setFont(18)
 
@@ -51,10 +59,13 @@ app.addLabel("title", "MakerLab - Photo Booth")
 app.setLabelBg("title", "black")
 app.setLabelFg("title", "white")
 
+
 app.addLabelEntry("Email:")
 
 # link the buttons to the function called press
-app.addButtons(["Confirm Email","Take Picture", "Reset"], press)
+app.addButton("Reset",reset)
+app.addButton("Confirm",confirm)
+app.addButton("Picture",picture)
 
 app.setFocus("Email:")
 
