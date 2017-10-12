@@ -29,45 +29,66 @@ from picamera import PiCamera
 from time import sleep
 from validate_email import validate_email
 
-#handle button events.
-def reset(button):
-    app.setFocus("Email:")
-    app.setEntry("Email:", "", callFunction=False)
 
+CAMERA="\u1F4F7"
+
+isvalid = False
 def confirm(button):
-    eml=app.getEntry("Email:")
-    is_valid = validate_email(eml)
-    print (is_valid)
-    
-def picture(button):
-    with PiCamera() as camera:
-        camera.resolution = (1920,1080)
-        camera.image_effect = 'none'
-        camera.start_preview()
-        # Camera warm-up time
-        sleep(2)
-        camera.capture('/home/pi/Pictures/test.jpg') 
-        camera.stop_preview()		
+    global isvalid
+    eml=app.getEntry("email")
+    isvalid = validate_email(eml)
+    if isvalid: app.setEntryValid("email")
+    else:
+        app.setEntryInvalid("email")
+        app.updateEntryDefault("email","Enter Valid Email")
+        isvalid = not isvalid;
+     
+clicked = False
+def takepic(btn):
+    if btn == "Press Me":
+        global clicked
+        if clicked:
+            app.setEntryDefault("email","Sending...")
+            sleep(1)
+            with PiCamera() as camera:
+                camera.resolution = (1080,1920)
+                camera.image_effect = 'none'
+                print(camera.image_effect)
+                camera.start_preview()
+                # Camera warm-up time
+                sleep(2)
+                camera.capture('/home/pi/Pictures/test_full.jpg')
+                sleep(2)
+                camera.capture('/home/pi/Pictures/test_small.gif',format = 'gif', resize=(432, 576)) 
+                camera.stop_preview()
+            app.setImage("clickme", "/home/pi/Pictures/test_small.gif")
+            sleep(10)
+            app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
+            app.setEntryDefault("email","Enter Email Address")
+
+        else: app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
+        clicked = not clicked
 
 # create a GUI variable called app
-app = gui("Login Window", "1024x600")
+app = gui("MakerLab Photobooth by Darren", "480x640")
 app.setBg("grey")
-app.setFont(18)
+app.setFont(12)
 
-# add & configure widgets - widgets get a name, to help referencing them later
-app.addLabel("title", "MakerLab - Photo Booth")
-app.setLabelBg("title", "black")
-app.setLabelFg("title", "white")
-
-
-app.addLabelEntry("Email:")
+app.addValidationEntry("email",0,1)
+app.setEntryDefault("email","Enter Email Address")
+app.setEntryMaxLength("email",50)
+#app.setFocus("email")
 
 # link the buttons to the function called press
-app.addButton("Reset",reset)
-app.addButton("Confirm",confirm)
-app.addButton("Picture",picture)
+app.addButton(CAMERA,confirm,0,2)
 
-app.setFocus("Email:")
+app.startLabelFrame("Picture", 1,0,3)
+app.addImage("clickme", '/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg')
+#app.setImageSubmitFunction("clickme", takepic)
+app.addButton("Press Me",takepic)
+app.stopLabelFrame()
 
 # start the GUI
+
+app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=44)
 app.go()
