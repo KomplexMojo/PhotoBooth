@@ -71,35 +71,35 @@ app = gui("MakerLab Photobooth by Darren", "800x480")
 app.setBg("white")
 app.setFont(12)
 
-app.setSticky("nw")
-app.addValidationEntry("email", 0, 0)
-app.setEntryDefault("email", "Enter Email Address")
-app.setEntryMaxLength("email", 50)
-
-# link the buttons to the function called press
-app.setSticky("nw")
-app.addIconButton("Email", confirm, "mail", 0, 1)
-
-app.startLabelFrame("Picture One", 1, 0, 1)
+app.startLabelFrame("Picture One", 0, 0, 1)
 app.setStretch("both")
 app.setPadding([80, 120])
 app.setInPadding([25, 25])
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
-app.startLabelFrame("Picture Two", 1, 1, 1)
+app.startLabelFrame("Picture Two", 0, 1, 1)
 app.setStretch("both")
 app.setPadding([80, 120])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
-app.startLabelFrame("Picture Three", 1, 2, 1)
+app.startLabelFrame("Picture Three", 0, 2, 1)
 app.setStretch("both")
 app.setPadding([80, 120])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
+
+app.setSticky("nw")
+app.addValidationEntry("email", 1, 0, 2)
+app.setEntryDefault("email", "Enter Email Address")
+app.setEntryMaxLength("email", 50)
+
+# link the buttons to the function called press
+app.setSticky("nw")
+app.addIconButton("Email", confirm, "mail", 0, 1)
 
 # start the GUI
 
