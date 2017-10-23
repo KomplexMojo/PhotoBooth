@@ -91,7 +91,7 @@ app.setBg("white")
 app.setFont(12)
 
 app.startSubWindow("mainwin", modal=False)
-app.setGeometry("fullscreen")
+app.setGeometry(800,480)
 app.setBg("white")
 
 app.setSticky("ns")
