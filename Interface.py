@@ -29,7 +29,6 @@ from picamera import PiCamera
 from time import sleep
 #from validate_email import validate_email
 
-mainwindowsize="800x460"
 emailwinsize="800x480"
 btnPaddingX=100
 btnPaddingY=120
@@ -80,12 +79,12 @@ def takepic(btn):
         print('end')
 
 # create a GUI variable called app
-app = gui("MakerLab Photobooth by Darren", "800x480")
+app = gui("MakerLab Photobooth by Darren", "Fullscreen")
 app.setBg("white")
 app.setFont(12)
 
 app.startSubWindow("mainwin", modal=True)
-app.setGeometry(mainwindowsize)
+app.setGeometry("Fullscreen")
 app.setBg("white")
 
 app.setSticky("ns")
