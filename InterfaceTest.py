@@ -70,7 +70,7 @@ def takepic(btn):
         clicked = not clicked
 
 # create a GUI variable called app
-app = gui("MakerLab Photobooth by Darren", "480x640")
+app = gui("MakerLab Photobooth by Darren", "800x480")
 app.setBg("grey")
 app.setFont(12)
 
