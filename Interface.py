@@ -56,14 +56,17 @@ def takepic(btn):
     if btn == "Picture One":
         takePic("image_small1.gif", "image_large1.gif")
         app.hideButton("Picture One")
+        app.reloadImage("img1", "image_small1.gif")
         app.showImage("img1")
     elif btn == "Picture Two":
         takePic("image_small2.gif", "image_large2.jpg")
         app.hideButton("Picture Two")
+        app.reloadImage("img2", "image_small2.gif")
         app.showImage("img2")
     elif btn == "Picture Three":
         takePic("image_small3.gif", "image_large3.jpg")
         app.hideButton("Picture Three")
+        app.reloadImage("img3", "image_small3.gif")
         app.showImage("img3")
     else:
         print('end')
