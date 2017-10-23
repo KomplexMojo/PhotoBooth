@@ -92,6 +92,7 @@ app.startLabelFrame("Picture One", 0, 0)
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setBg("white")
+app.setFg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
