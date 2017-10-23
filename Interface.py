@@ -90,7 +90,7 @@ app = gui("MakerLab Photobooth by Darren", "fullscreen")
 app.setBg("white")
 app.setFont(12)
 
-app.startSubWindow("mainwin", modal=True)
+app.startSubWindow("mainwin", modal=False)
 app.setGeometry("fullscreen")
 app.setBg("white")
 
