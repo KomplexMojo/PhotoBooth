@@ -33,7 +33,7 @@ isvalid = True
 def confirm(button):
     global isvalid
     #eml=app.getEntry("email")
-    app.destroySubWindow("emailwin")
+    app.hidSubWindow("emailwin")
 
  #   isvalid = validate_email(eml)
     #if isvalid: app.setEntryValid("email")
