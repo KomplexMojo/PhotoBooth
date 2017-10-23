@@ -30,6 +30,7 @@ from time import sleep
 #from validate_email import validate_email
 
 mainwindowsize="800x480"
+emailwinsize="800x480"
 picframewidth=267
 pciframeheight=480
 
@@ -84,7 +85,6 @@ app = gui("MakerLab Photobooth by Darren", "800x480")
 app.setBg("white")
 app.setFont(12)
 
-
 app.startSubWindow("mainwin", modal=True)
 app.setGeometry(mainwindowsize)
 
@@ -111,14 +111,14 @@ app.stopLabelFrame()
 app.stopSubWindow()
 
 app.startSubWindow("emailwin", modal=True)
-app.setSticky("nw")
+#app.setSticky("nw")
 app.setBg("white")
-app.setGeometry("400x400")
+app.setGeometry(emailwinsize)
 app.addValidationEntry("email", 1, 0, 3)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
 # link the buttons to the function called press
-app.setSticky("nw")
+#app.setSticky("nw")
 app.addIconButton("Email", confirm, "mail", 1, 2)
 #app.addNamedButton("CLOSE", "emailwin", app.hideSubWindow)
 app.stopSubWindow()
