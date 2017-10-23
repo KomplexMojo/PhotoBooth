@@ -42,7 +42,7 @@ def confirm(button):
 
 clicked = False
 def takepic(btn):
-    if btn == "Picture":
+    if btn == "Picture One":
         global clicked
         if clicked:
             app.setEntryDefault("email", "Sending...")
@@ -79,15 +79,15 @@ app.setEntryMaxLength("email", 50)
 app.addIconButton("Email", confirm, "mail", 0, 2)
 
 app.startLabelFrame("Picture One", 1, 0, 1)
-app.addIconButton("Picture", takepic, "md-camera-photo")
+app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Two", 1, 1, 1)
-app.addIconButton("Picture", takepic, "md-camera-photo")
+app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Three", 1, 2, 1)
-app.addIconButton("Picture", takepic, "md-camera-photo")
+app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 
