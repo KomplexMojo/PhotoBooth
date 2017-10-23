@@ -29,9 +29,6 @@ from picamera import PiCamera
 from time import sleep
 #from validate_email import validate_email
 
-
-CAMERA="\u1F4F7"
-
 isvalid = True
 def confirm(button):
     global isvalid
@@ -45,7 +42,7 @@ def confirm(button):
 
 clicked = False
 def takepic(btn):
-    if btn == "Press Me":
+    if btn == "Picture":
         global clicked
         if clicked:
             app.setEntryDefault("email", "Sending...")
@@ -59,7 +56,7 @@ def takepic(btn):
                 sleep(2)
                 camera.capture('/home/pi/Pictures/test_full.jpg')
                 sleep(2)
-                camera.capture('/home/pi/Pictures/test_small.gif', format = 'gif', resize=(432, 576))
+                camera.capture('/home/pi/Pictures/test_small.gif', format='gif', resize=(432, 576))
                 camera.stop_preview()
             app.setImage("clickme", "/home/pi/Pictures/test_small.gif")
             sleep(10)
@@ -77,18 +74,12 @@ app.setFont(12)
 app.addValidationEntry("email", 0 ,1)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
-#app.setFocus("email")
 
 # link the buttons to the function called press
-#app.addButton(CAMERA,confirm,0,2)
 app.addIconButton("Email", confirm, "mail", 0, 2)
-#test
-
 
 app.startLabelFrame("Picture", 1, 0, 3)
-#app.addImage("clickme", '/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg')
-#app.setImageSubmitFunction("clickme", takepic)
-app.addButton("Press Me", takepic)
+app.addIconButton("Picture", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 # start the GUI
