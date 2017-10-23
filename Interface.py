@@ -111,7 +111,7 @@ app.setBg("orange")
 app.setGeometry("400x400")
 app.setTransparency(25)
 app.addLabel("l1", "In sub window")
-app.addNamedButton("CLOSE", "Demo", app.hideSubWindow)
+app.addNamedButton("CLOSE", "emailwin", app.hideSubWindow)
 app.stopSubWindow()
 
 # start the GUI
