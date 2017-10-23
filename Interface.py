@@ -34,6 +34,8 @@ btnPaddingX=100
 btnPaddingY=120
 topPad=20
 sidePad=10
+picSmall=""
+picLarge=""
 
 isvalid = True
 def confirm(button):
@@ -52,33 +54,29 @@ def confirm(button):
 clicked = False
 def takepic(btn):
     if btn == "Picture One":
-        global clicked
-        if clicked:
-            app.setEntryDefault("email", "Sending...")
-            sleep(1)
-            with PiCamera() as camera:
-                camera.resolution = (1080, 1920)
-                camera.image_effect = 'none'
-                print(camera.image_effect)
-                camera.start_preview()
-                # Camera warm-up time
-                sleep(2)
-                camera.capture('/home/pi/Pictures/test_full.jpg')
-                sleep(2)
-                camera.capture('/home/pi/Pictures/test_small.gif', format='gif', resize=(432, 576))
-                camera.stop_preview()
-            app.setImage("clickme", "/home/pi/Pictures/test_small.gif")
-            sleep(10)
-            app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
-            app.setEntryDefault("email","Enter Email Address")
-        else: app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
-        clicked = not clicked
+        print('One')
+        takePic("image_small.gif", "image_large.gif")
+        app.hideIconButton("Picture One")
     elif btn == "Picture Two":
         print('Two')
     elif btn == "Picture Three":
         print('Three')
     else:
         print('end')
+
+
+def takePic(imagePreview, imageName):
+    with PiCamera() as camera:
+        camera.resolution = (1080, 1920)
+        camera.image_effect = 'none'
+        print(camera.image_effect)
+        camera.start_preview()
+        # Camera warm-up time
+        sleep(2)
+        camera.capture(imageName)
+        sleep(2)
+        camera.capture(imagePreview, format='gif', resize=(216, 384))
+        camera.stop_preview()
 
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "fullscreen")
