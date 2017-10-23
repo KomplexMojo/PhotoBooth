@@ -93,6 +93,7 @@ app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.setSticky("nw")
+app.setPadding([0, 30])
 app.addValidationEntry("email", 1, 0, 2)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
@@ -102,6 +103,5 @@ app.setSticky("nw")
 app.addIconButton("Email", confirm, "mail", 1, 1)
 
 # start the GUI
-
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
 app.go()
