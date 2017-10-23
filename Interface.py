@@ -40,7 +40,7 @@ def confirm(button):
     if isvalid: app.setEntryValid("email")
     else:
         app.setEntryInvalid("email")
-        app.updateEntryDefault("email","Enter Valid Email")
+        app.updateEntryDefault("email", "Enter Valid Email")
         isvalid = not isvalid;
 
 clicked = False
@@ -48,10 +48,10 @@ def takepic(btn):
     if btn == "Press Me":
         global clicked
         if clicked:
-            app.setEntryDefault("email","Sending...")
+            app.setEntryDefault("email", "Sending...")
             sleep(1)
             with PiCamera() as camera:
-                camera.resolution = (1080,1920)
+                camera.resolution = (1080, 1920)
                 camera.image_effect = 'none'
                 print(camera.image_effect)
                 camera.start_preview()
@@ -59,7 +59,7 @@ def takepic(btn):
                 sleep(2)
                 camera.capture('/home/pi/Pictures/test_full.jpg')
                 sleep(2)
-                camera.capture('/home/pi/Pictures/test_small.gif',format = 'gif', resize=(432, 576)) 
+                camera.capture('/home/pi/Pictures/test_small.gif', format = 'gif', resize=(432, 576))
                 camera.stop_preview()
             app.setImage("clickme", "/home/pi/Pictures/test_small.gif")
             sleep(10)
@@ -74,19 +74,19 @@ app = gui("MakerLab Photobooth by Darren", "800x480")
 app.setBg("grey")
 app.setFont(12)
 
-app.addValidationEntry("email",0,1)
-app.setEntryDefault("email","Enter Email Address")
-app.setEntryMaxLength("email",50)
+app.addValidationEntry("email", 0 ,1)
+app.setEntryDefault("email", "Enter Email Address")
+app.setEntryMaxLength("email", 50)
 #app.setFocus("email")
 
 # link the buttons to the function called press
 #app.addButton(CAMERA,confirm,0,2)
-app.addIconButton("Email", "confirm", "mail.png",0,2)
+app.addIconButton("Email", confirm, "mail.png", 0, 2)
 
-app.startLabelFrame("Picture", 1,0,3)
+app.startLabelFrame("Picture", 1, 0, 3)
 #app.addImage("clickme", '/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg')
 #app.setImageSubmitFunction("clickme", takepic)
-app.addButton("Press Me",takepic)
+app.addButton("Press Me", takepic)
 app.stopLabelFrame()
 
 # start the GUI
