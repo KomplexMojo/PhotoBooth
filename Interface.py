@@ -81,6 +81,7 @@ app.setFont(12)
 
 
 app.startSubWindow("mainwin", modal=True)
+app.setGeometry("800x480")
 app.startLabelFrame("Picture One", 0, 0, 1)
 app.setStretch("both")
 app.setPadding([80, 110])
