@@ -94,13 +94,13 @@ app.stopLabelFrame()
 
 app.setSticky("nw")
 app.setInPadding([0, 10])
-app.addValidationEntry("email", 1, 0, 2)
+app.addValidationEntry("email", 1, 0, 3)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
 
 # link the buttons to the function called press
 app.setSticky("nw")
-app.addIconButton("Email", confirm, "mail", 1, 1)
+app.addIconButton("Email", confirm, "mail", 1, 2)
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
