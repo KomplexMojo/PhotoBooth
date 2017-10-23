@@ -93,7 +93,7 @@ app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.setSticky("nw")
-app.setPadding([0, 30])
+app.setInPadding([0, 10])
 app.addValidationEntry("email", 1, 0, 2)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
