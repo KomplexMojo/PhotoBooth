@@ -90,5 +90,5 @@ app.stopLabelFrame()
 
 # start the GUI
 
-app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=44)
+app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
 app.go()
