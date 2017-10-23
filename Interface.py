@@ -65,6 +65,12 @@ def takepic(btn):
 
         else: app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
         clicked = not clicked
+    elif btn == "Picture Two":
+        print('Two')
+    elif btn == "Picture Three":
+        app.showSubWindow("Email Stuff")
+    else:
+        print('end')
 
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "800x480")
@@ -92,15 +98,16 @@ app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
+app.startSubWindow("email", modal=True)
 app.setSticky("nw")
 app.setInPadding([0, 10])
-app.addValidationEntry("email", 1, 0, 3)
+app.addValidationEntry("emailwin", 1, 0, 3)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
-
 # link the buttons to the function called press
 app.setSticky("nw")
 app.addIconButton("Email", confirm, "mail", 1, 2)
+app.stopSubWindow()
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
