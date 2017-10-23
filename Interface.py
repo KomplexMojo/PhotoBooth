@@ -36,11 +36,11 @@ def confirm(button):
     app.destroySubWindow("emailwin")
 
  #   isvalid = validate_email(eml)
-    if isvalid: app.setEntryValid("email")
-    else:
-        app.setEntryInvalid("email")
-        app.updateEntryDefault("email", "Enter Valid Email")
-        isvalid = not isvalid;
+    #if isvalid: app.setEntryValid("email")
+    #else:
+    #    app.setEntryInvalid("email")
+    #    app.updateEntryDefault("email", "Enter Valid Email")
+    #    isvalid = not isvalid;
 
 clicked = False
 def takepic(btn):
