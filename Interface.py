@@ -72,7 +72,7 @@ app.setBg("grey")
 app.setFont(12)
 
 app.setSticky("ne")
-app.addValidationEntry("email", 0 ,0)
+app.addValidationEntry("email", 0, 0)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
 
@@ -85,12 +85,12 @@ app.setStretch("both")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
-app.startLabelFrame("Picture Two", 1, 1, 1)
+app.startLabelFrame("Picture Two", 2, 1, 1)
 app.setStretch("both")
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
-app.startLabelFrame("Picture Three", 1, 2, 1)
+app.startLabelFrame("Picture Three", 3, 2, 1)
 app.setStretch("both")
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
