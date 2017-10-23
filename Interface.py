@@ -82,20 +82,24 @@ app.addIconButton("Email", confirm, "mail", 0, 1)
 
 app.startLabelFrame("Picture One", 1, 0, 1)
 app.setStretch("both")
-app.setPadding([40,40])
+app.setPadding([80,80])
+app.setInPadding([75,75])
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Two", 1, 1, 1)
 app.setStretch("both")
+app.setPadding([80, 80])
+app.setInPadding([75, 75])
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Three", 1, 2, 1)
 app.setStretch("both")
+app.setPadding([80,80])
+app.setInPadding([75,75])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
-
 
 # start the GUI
 
