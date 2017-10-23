@@ -34,6 +34,7 @@ def confirm(button):
     global isvalid
     #eml=app.getEntry("email")
     app.hideSubWindow("emailwin")
+    app.showSubWindow("mainwin")
 
  #   isvalid = validate_email(eml)
     #if isvalid: app.setEntryValid("email")
@@ -78,6 +79,8 @@ app = gui("MakerLab Photobooth by Darren", "800x480")
 app.setBg("white")
 app.setFont(12)
 
+
+app.startSubWindow("mainwin", modal=True)
 app.startLabelFrame("Picture One", 0, 0, 1)
 app.setStretch("both")
 app.setPadding([80, 110])
@@ -98,6 +101,7 @@ app.setPadding([80, 110])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
+app.stopSubWindow()
 
 app.startSubWindow("emailwin", modal=True)
 app.setSticky("nw")
