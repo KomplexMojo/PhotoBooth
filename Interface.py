@@ -71,11 +71,13 @@ app = gui("MakerLab Photobooth by Darren", "800x480")
 app.setBg("grey")
 app.setFont(12)
 
+app.setSticky("ne")
 app.addValidationEntry("email", 0 ,0)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
 
 # link the buttons to the function called press
+app.setSticky("ne")
 app.addIconButton("Email", confirm, "mail", 0, 1)
 
 app.startLabelFrame("Picture One", 1, 0, 1)
