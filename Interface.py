@@ -56,7 +56,7 @@ def takepic(btn):
     if btn == "Picture One":
         print('One')
         takePic("image_small.gif", "image_large.gif")
-        app.hideIconButton("Picture One")
+        app.hideButton("Picture One")
     elif btn == "Picture Two":
         print('Two')
     elif btn == "Picture Three":
@@ -92,7 +92,6 @@ app.startLabelFrame("Picture One", 0, 0)
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setBg("white")
-app.setFg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
