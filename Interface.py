@@ -31,9 +31,8 @@ from time import sleep
 
 mainwindowsize="800x480"
 emailwinsize="800x480"
-picframewidth=267
-pciframeheight=480
-
+btnPaddingX=100
+btnPaddingY=200
 
 isvalid = True
 def confirm(button):
@@ -90,35 +89,31 @@ app.setGeometry(mainwindowsize)
 app.setBg("white")
 
 app.startLabelFrame("Picture One", 0, 0, 1)
-#app.setStretch("both")
+app.setSticky("nw")
+app.setInPadding([btnPaddingX, btnPaddingY])
 app.setBg("white")
-app.setInPadding([80, 140])
-#app.setInPadding([25, 25])
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Two", 0, 1, 1)
 #app.setStretch("both")
+app.setSticky("n")
+app.setInPadding([btnPaddingX, btnPaddingY])
 app.setBg("white")
-app.setSticky("nw")
-#app.setPadding([80, 140])
-app.setInPadding([80, 140])
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Three", 0, 2, 1)
 #app.setStretch("both")
 app.setBg("white")
-app.setSticky("n")
-app.setInPadding([80, 140])
-#app.setInPadding([25, 25])
+app.setSticky("ne")
+app.setInPadding([btnPaddingX, btnPaddingY])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 app.stopSubWindow()
 
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
 app.setBg("white")
-app.setSticky("ne")
 app.setGeometry(emailwinsize)
 app.addValidationEntry("email", 0, 0)
 app.setEntryDefault("email", "Enter Email Address")
