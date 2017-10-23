@@ -83,7 +83,7 @@ app.setEntryMaxLength("email",50)
 app.addButton(CAMERA,confirm,0,2)
 
 app.startLabelFrame("Picture", 1,0,3)
-app.addImage("clickme", '/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg')
+#app.addImage("clickme", '/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg')
 #app.setImageSubmitFunction("clickme", takepic)
 app.addButton("Press Me",takepic)
 app.stopLabelFrame()
