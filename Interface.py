@@ -29,7 +29,7 @@ from picamera import PiCamera
 from time import sleep
 #from validate_email import validate_email
 
-mainwindowsize="800x480"
+mainwindowsize="800x460"
 emailwinsize="800x480"
 btnPaddingX=100
 btnPaddingY=120
