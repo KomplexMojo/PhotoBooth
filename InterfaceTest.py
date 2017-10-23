@@ -27,16 +27,16 @@
 from appJar import gui
 from picamera import PiCamera
 from time import sleep
-from validate_email import validate_email
+#from validate_email import validate_email
 
 
 CAMERA="\u1F4F7"
 
-isvalid = False
+isvalid = True
 def confirm(button):
     global isvalid
     eml=app.getEntry("email")
-    isvalid = validate_email(eml)
+ #   isvalid = validate_email(eml)
     if isvalid: app.setEntryValid("email")
     else:
         app.setEntryInvalid("email")
