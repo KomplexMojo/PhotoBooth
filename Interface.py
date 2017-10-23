@@ -82,6 +82,7 @@ app.addIconButton("Email", confirm, "mail", 0, 1)
 
 app.startLabelFrame("Picture One", 1, 0, 1)
 app.setStretch("both")
+app.setPadding([40,40])
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
