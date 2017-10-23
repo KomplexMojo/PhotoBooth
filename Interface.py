@@ -54,13 +54,17 @@ def confirm(button):
 clicked = False
 def takepic(btn):
     if btn == "Picture One":
-        print('One')
-        takePic("image_small.gif", "image_large.gif")
+        takePic("image_small1.gif", "image_large1.gif")
         app.hideButton("Picture One")
+        app.showImage("img1")
     elif btn == "Picture Two":
-        print('Two')
+        takePic("image_small2.gif", "image_large2.jpg")
+        app.hideButton("Picture Two")
+        app.showImage("img2")
     elif btn == "Picture Three":
-        print('Three')
+        takePic("image_small3.gif", "image_large3.jpg")
+        app.hideButton("Picture Three")
+        app.showImage("img3")
     else:
         print('end')
 
@@ -93,6 +97,8 @@ app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
+app.addImage("img1", "image_small.gif")
+app.hideImage("img1")
 app.stopLabelFrame()
 
 app.setSticky("ns")
@@ -101,6 +107,8 @@ app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
+app.addImage("img2", "image_small.gif")
+app.hideImage("img2")
 app.stopLabelFrame()
 
 app.setSticky("ns")
@@ -109,7 +117,10 @@ app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
+app.addImage("img3", "image_small.gif")
+app.hideImage("img3")
 app.stopLabelFrame()
+
 app.stopSubWindow()
 
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
