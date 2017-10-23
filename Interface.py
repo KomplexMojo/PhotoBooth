@@ -82,6 +82,8 @@ app.setEntryMaxLength("email", 50)
 # link the buttons to the function called press
 #app.addButton(CAMERA,confirm,0,2)
 app.addIconButton("Email", confirm, "mail", 0, 2)
+#test
+
 
 app.startLabelFrame("Picture", 1, 0, 3)
 #app.addImage("clickme", '/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg')
