@@ -108,7 +108,7 @@ app.setEntryMaxLength("email", 50)
 # link the buttons to the function called press
 app.setSticky("nw")
 app.addIconButton("Email", confirm, "mail", 1, 2)
-app.addNamedButton("CLOSE", "emailwin", app.hideSubWindow)
+app.addNamedButton("CLOSE", "emailwin", app.distroySubWindow)
 app.stopSubWindow()
 
 # start the GUI
