@@ -98,7 +98,7 @@ app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
-app.startSubWindow("emailwin","Email Address", modal=True)
+app.startSubWindow("emailwin", modal=True)
 app.setSticky("nw")
 #app.setInPadding([0, 10])
 #app.addValidationEntry("emailwin", 1, 0, 3)
@@ -111,4 +111,4 @@ app.stopSubWindow()
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
-app.go()
+app.go(startWindow="emailwin")
