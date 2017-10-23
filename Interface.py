@@ -32,7 +32,7 @@ from time import sleep
 mainwindowsize="800x480"
 emailwinsize="800x480"
 btnPaddingX=100
-btnPaddingY=200
+btnPaddingY=150
 
 isvalid = True
 def confirm(button):
@@ -91,6 +91,7 @@ app.setBg("white")
 app.startLabelFrame("Picture One", 0, 0, 1)
 app.setSticky("nw")
 app.setInPadding([btnPaddingX, btnPaddingY])
+app.setPadding([btnPaddingX+10, btnPaddingY+10])
 app.setBg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
