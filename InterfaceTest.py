@@ -41,6 +41,7 @@ def confirm(button):
     else:
         app.setEntryInvalid("email")
         app.updateEntryDefault("email","Enter Valid Email")
+        isvalid = isvalid;
         isvalid = not isvalid;
      
 clicked = False
