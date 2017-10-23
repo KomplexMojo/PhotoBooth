@@ -31,8 +31,10 @@ from time import sleep
 
 isvalid = True
 def confirm(button):
-    global isvalid
-    eml=app.getEntry("email")
+    #global isvalid
+    #eml=app.getEntry("email")
+    app.destroySubWindow("emailwin")
+
  #   isvalid = validate_email(eml)
     if isvalid: app.setEntryValid("email")
     else:
@@ -62,13 +64,12 @@ def takepic(btn):
             sleep(10)
             app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
             app.setEntryDefault("email","Enter Email Address")
-
         else: app.setImage("clickme", "/home/pi/PhotoBooth/SourceImages/pressme_new1.jpg")
         clicked = not clicked
     elif btn == "Picture Two":
         print('Two')
     elif btn == "Picture Three":
-        app.showSubWindow(emailwin, "Test")
+        print('Three')
     else:
         print('end')
 
@@ -108,7 +109,7 @@ app.setEntryMaxLength("email", 50)
 # link the buttons to the function called press
 app.setSticky("nw")
 app.addIconButton("Email", confirm, "mail", 1, 2)
-app.addNamedButton("CLOSE", "emailwin", app.destroySubWindow)
+#app.addNamedButton("CLOSE", "emailwin", app.hideSubWindow)
 app.stopSubWindow()
 
 # start the GUI
