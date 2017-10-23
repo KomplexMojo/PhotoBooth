@@ -89,7 +89,7 @@ app.setGeometry(mainwindowsize)
 app.setBg("white")
 
 app.startLabelFrame("Picture One", 0, 0)
-app.setSticky("nw")
+#app.setSticky("nw")
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([10,10])
 app.setBg("white")
@@ -97,22 +97,20 @@ app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Two", 0, 1)
-app.setSticky("n")
+#app.setSticky("n")
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([10,10])
 app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
-
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Three", 0, 2)
-app.setSticky("ne")
+#app.setSticky("ne")
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([10,10])
 app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
-
 app.stopSubWindow()
 
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
