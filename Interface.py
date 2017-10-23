@@ -31,7 +31,7 @@ from time import sleep
 
 isvalid = True
 def confirm(button):
-    #global isvalid
+    global isvalid
     #eml=app.getEntry("email")
     app.destroySubWindow("emailwin")
 
