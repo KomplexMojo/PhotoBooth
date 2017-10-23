@@ -73,21 +73,21 @@ app.setFont(12)
 
 app.startLabelFrame("Picture One", 0, 0, 1)
 app.setStretch("both")
-app.setPadding([80, 120])
+app.setPadding([80, 110])
 app.setInPadding([25, 25])
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Two", 0, 1, 1)
 app.setStretch("both")
-app.setPadding([80, 120])
+app.setPadding([80, 110])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Three", 0, 2, 1)
 app.setStretch("both")
-app.setPadding([80, 120])
+app.setPadding([80, 110])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
@@ -99,7 +99,7 @@ app.setEntryMaxLength("email", 50)
 
 # link the buttons to the function called press
 app.setSticky("nw")
-app.addIconButton("Email", confirm, "mail", 0, 1)
+app.addIconButton("Email", confirm, "mail", 1, 1)
 
 # start the GUI
 
