@@ -32,7 +32,7 @@ from time import sleep
 mainwindowsize="800x480"
 emailwinsize="800x480"
 btnPaddingX=100
-btnPaddingY=150
+btnPaddingY=125
 
 isvalid = True
 def confirm(button):
