@@ -32,6 +32,8 @@ from time import sleep
 emailwinsize="800x480"
 btnPaddingX=100
 btnPaddingY=120
+topPad=20
+sidePad=10
 
 isvalid = True
 def confirm(button):
@@ -90,7 +92,7 @@ app.setBg("white")
 app.setSticky("ns")
 app.startLabelFrame("Picture One", 0, 0)
 app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([10, 10])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
@@ -98,7 +100,7 @@ app.stopLabelFrame()
 app.setSticky("ns")
 app.startLabelFrame("Picture Two", 0, 1)
 app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([10, 10])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
@@ -106,7 +108,7 @@ app.stopLabelFrame()
 app.setSticky("ns")
 app.startLabelFrame("Picture Three", 0, 2)
 app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([10, 10])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
