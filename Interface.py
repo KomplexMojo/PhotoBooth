@@ -29,6 +29,11 @@ from picamera import PiCamera
 from time import sleep
 #from validate_email import validate_email
 
+mainwindowsize="800x480"
+picframewidth=267
+pciframeheight=480
+
+
 isvalid = True
 def confirm(button):
     global isvalid
@@ -81,24 +86,25 @@ app.setFont(12)
 
 
 app.startSubWindow("mainwin", modal=True)
-app.setGeometry("800x480")
+app.setGeometry(mainwindowsize)
+
 app.startLabelFrame("Picture One", 0, 0, 1)
 app.setStretch("both")
-app.setPadding([80, 110])
+app.setPadding([80, 120])
 app.setInPadding([25, 25])
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Two", 0, 1, 1)
 app.setStretch("both")
-app.setPadding([80, 110])
+app.setPadding([80, 120])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
 app.startLabelFrame("Picture Three", 0, 2, 1)
 app.setStretch("both")
-app.setPadding([80, 110])
+app.setPadding([80, 120])
 app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
