@@ -78,9 +78,18 @@ app.setEntryMaxLength("email", 50)
 # link the buttons to the function called press
 app.addIconButton("Email", confirm, "mail", 0, 2)
 
-app.startLabelFrame("Picture", 1, 0, 3)
+app.startLabelFrame("Picture One", 1, 0, 1)
 app.addIconButton("Picture", takepic, "md-camera-photo")
 app.stopLabelFrame()
+
+app.startLabelFrame("Picture Two", 1, 1, 1)
+app.addIconButton("Picture", takepic, "md-camera-photo")
+app.stopLabelFrame()
+
+app.startLabelFrame("Picture Three", 1, 2, 1)
+app.addIconButton("Picture", takepic, "md-camera-photo")
+app.stopLabelFrame()
+
 
 # start the GUI
 
