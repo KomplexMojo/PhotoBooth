@@ -68,7 +68,7 @@ def takepic(btn):
     elif btn == "Picture Two":
         print('Two')
     elif btn == "Picture Three":
-        app.showSubWindow("Email Stuff")
+        app.showSubWindow(emailwin, "Test")
     else:
         print('end')
 
@@ -98,7 +98,7 @@ app.setInPadding([25, 25])
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 
-app.startSubWindow("email", modal=True)
+app.startSubWindow("emailwin","Email Address", modal=True)
 app.setSticky("nw")
 app.setInPadding([0, 10])
 app.addValidationEntry("emailwin", 1, 0, 3)
