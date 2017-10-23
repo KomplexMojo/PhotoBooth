@@ -107,6 +107,11 @@ app.setSticky("nw")
 # link the buttons to the function called press
 #app.setSticky("nw")
 #app.addIconButton("Email", confirm, "mail", 1, 2)
+app.setBg("orange")
+app.setGeometry("400x400")
+app.setTransparency(25)
+app.addLabel("l1", "In sub window")
+app.addNamedButton("CLOSE", "Demo", app.hideSubWindow)
 app.stopSubWindow()
 
 # start the GUI
