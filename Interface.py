@@ -110,17 +110,13 @@ app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.stopLabelFrame()
 app.stopSubWindow()
 
-app.startSubWindow("emailwin", modal=True)
-#app.setSticky("nw")
+app.startSubWindow("emailwin","Enter Email Address", modal=True)
 app.setBg("white")
 app.setGeometry(emailwinsize)
-app.addValidationEntry("email", 1, 0, 3)
+app.addValidationEntry("email", 0, 0)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
-# link the buttons to the function called press
-#app.setSticky("nw")
-app.addIconButton("Email", confirm, "mail", 1, 2)
-#app.addNamedButton("CLOSE", "emailwin", app.hideSubWindow)
+app.addIconButton("Email", confirm, "mail", 0, 1)
 app.stopSubWindow()
 
 # start the GUI
