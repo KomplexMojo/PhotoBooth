@@ -75,14 +75,14 @@ def takepic(btn):
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
-        takePic("image_small2.gif", "image_large2.jpg")
+        takePic(fileName + "_small_2" + ".png", fileName + "_large_2" + ".png")
         app.hideButton("Picture Two")
-        app.reloadImage("img2", "image_small2.gif")
+        app.reloadImage("img2", folderPath + fileName + "_small_2" + ".png")
         app.showImage("img2")
     elif btn == "Picture Three":
-        takePic("image_small3.gif", "image_large3.jpg")
+        takePic(fileName + "_small_3" + ".png", fileName + "_large_3" + ".png")
         app.hideButton("Picture Three")
-        app.reloadImage("img3", "image_small3.gif")
+        app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
     else:
         print('end')
