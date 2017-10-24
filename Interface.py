@@ -168,7 +168,7 @@ app.startLabelFrame("Email Frame", 0, 0)
 app.setBg("white")
 
 app.addValidationEntry("emailtxt", 0, 1)
-app.getEntryWidget("l1").config(font="Verdana 12 normal")
+app.getEntryWidget("emailtxt").config(font="Verdana 12 normal")
 app.setEntryDefault("emailtxt", "Enter Email Address")
 app.setEntryMaxLength("emailtxt", 100)
 app.setEntryWidth("emailtxt", 50)
