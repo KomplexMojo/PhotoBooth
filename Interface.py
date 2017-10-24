@@ -28,6 +28,7 @@ from appJar import gui
 from picamera import PiCamera
 from time import sleep
 import re
+import os
 import string
 
 
@@ -70,7 +71,7 @@ def verifyemail(button):
 
 def takepic(btn):
     if btn == "Picture One":
-        takePic(folderPath + fileName + "_small_1" + ".png", folderPath + fileName + "_large_1" + ".png")
+        takePic(fileName + "_small_1" + ".png", fileName + "_large_1" + ".png")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
@@ -89,18 +90,20 @@ def takepic(btn):
 
 
 def takePic(imagePreview, imageName):
+
+    if not os.path.exists(folderPath):
+        os.makedirs(folderPath)
+
     with PiCamera() as camera:
         camera.resolution = (1080, 1920)
         camera.image_effect = 'none'
-        print(camera.image_effect)
         camera.start_preview()
         # Camera warm-up time
         sleep(2)
-        camera.capture(imageName)
+        camera.capture(folderPath + imageName)
         sleep(2)
-        camera.capture(imagePreview, format='gif', resize=(216, 384))
+        camera.capture(folderPath + imageName, format='png', resize=(216, 384))
         camera.stop_preview()
-
 
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "fullscreen")
