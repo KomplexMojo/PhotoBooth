@@ -49,6 +49,7 @@ def verifyemail(button):
     global emailFolder
     global match
     global folderPath
+    global tempPath
 
     addressToVerify = app.getEntry("email")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
@@ -58,9 +59,11 @@ def verifyemail(button):
         app.setEntryInvalid("email")
     else:
         app.setEntryValid("email")
-        print(addressToVerify)
-        folderPath = addressToVerify.translate({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"})
-        print(folderPath)
+        #print(addressToVerify)
+        tempPath = str(match.group(0))
+        print(tempPath)
+        folderPath = tempPath.translate({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"})
+        #print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("mainwin")
 
