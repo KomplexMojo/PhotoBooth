@@ -57,7 +57,7 @@ def verifyemail(button):
         app.setEntryInvalid("email")
     else:
         app.setEntryValid("email")
-        folderPath = str(addressToVerify.translate({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"}))
+        folderPath = str(match.translate({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"}))
         print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("mainwin")
@@ -142,6 +142,8 @@ app.stopSubWindow()
 
 #========= Start Email Window ============#
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
+app.setGeometry(800,480)
+app.setBg("white")
 app.setSticky("nsew")
 app.startLabelFrame("Email Frame", 0, 2)
 app.setBg("white")
