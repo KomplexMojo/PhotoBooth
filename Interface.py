@@ -32,7 +32,7 @@ import os
 import string
 
 
-emailwinsize="800x480"
+winsize="800x476"
 btnPaddingX=100
 btnPaddingY=120
 topPad=0
@@ -123,7 +123,7 @@ app.setBg("white")
 
 #========= Start Picture Window ============#
 app.startSubWindow("picwin", modal=False)
-app.setGeometry(800,480)
+app.setGeometry(winsize)
 app.setBg("white")
 
 app.setSticky("ns")
@@ -160,13 +160,12 @@ app.stopSubWindow()
 
 #========= Start Email Window ============#
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
-app.setGeometry(800,480)
+app.setGeometry(winsize)
 app.setBg("white")
 app.setSticky("nsew")
 
 app.startLabelFrame("Email Frame", 0, 0)
 app.setBg("white")
-app.setGeometry(emailwinsize)
 
 app.addValidationEntry("emailtxt", 0, 1)
 app.setEntryDefault("emailtxt", "Enter Email Address")
