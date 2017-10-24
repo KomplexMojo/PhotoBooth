@@ -32,7 +32,7 @@ import os
 import string
 
 
-winsize="800x470"
+winsize="800x468"
 btnPaddingX=100
 btnPaddingY=120
 topPad=0
