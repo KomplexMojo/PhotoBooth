@@ -92,11 +92,10 @@ def takepic(btn):
 
 def resetInterface():
     app.hideSubWindow("picwin")
-    app.addImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-    app.addImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-    app.addImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.showSubWindow("emailwin")
-
 
 
 def takePic(imagePreview, imageName):
@@ -118,7 +117,7 @@ def takePic(imagePreview, imageName):
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "fullscreen")
 app.setBg("white")
-app.setFont(12)
+#app.setFont(12)
 
 #========= Start Picture Window ============#
 app.startSubWindow("picwin", modal=False)
@@ -171,6 +170,7 @@ app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 100)
 app.addIconButton("Email", verifyemail, "mail", 0, 1)
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.")
+app.getLabelWidget("step1").config(font="Verdana 20  underline")
 app.addLabel("step2", "Step 2 - Press the email button to confirm email address.")
 app.addLabel("step3", "Step 3 - In the next screen press a camera button.")
 app.addLabel("step4", "Step 4 - Pose for 3 seconds.")
