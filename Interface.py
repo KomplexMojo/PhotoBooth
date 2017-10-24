@@ -52,7 +52,7 @@ def verifyemail(button):
 
     addressToVerify = app.getEntry("email")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
-    print(match)
+    print(match.group())
 
     if match is None:
         app.setEntryInvalid("email")
