@@ -62,8 +62,7 @@ def verifyemail(button):
     else:
         app.setEntryValid("email")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
-        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0))
-
+        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "/"
         print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("mainwin")
