@@ -32,7 +32,7 @@ import os
 import string
 
 
-winsize="800x476"
+winsize="800x474"
 btnPaddingX=100
 btnPaddingY=120
 topPad=0
@@ -84,19 +84,19 @@ def takepic(btn):
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
-        sleep(5)
+        sleep(3)
         resetInterface()
     else:
         print('end')
 
 
 def resetInterface():
+    app.clearEntry("emailtxt", callFunction=False, setFocus=True)
+    app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
     app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-    app.clearEntry("emailtxt", callFunction=False,setFocus=True)
-    app.showSubWindow("emailwin")
 
 
 
