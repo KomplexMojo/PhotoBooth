@@ -43,12 +43,14 @@ isValid = False
 emailFolder = ""
 match = None
 folderPath = ""
+fileName = ""
 
 def verifyemail(button):
     global isValid
     global emailFolder
     global match
     global folderPath
+    global fileName
 
     addressToVerify = app.getEntry("email")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
@@ -58,7 +60,9 @@ def verifyemail(button):
         app.setEntryInvalid("email")
     else:
         app.setEntryValid("email")
-        folderPath = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
+        fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
+        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0))
+
         print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("mainwin")
@@ -66,9 +70,9 @@ def verifyemail(button):
 
 def takepic(btn):
     if btn == "Picture One":
-        takePic("image_small1.gif", "image_large1.gif")
+        takePic(folderPath + fileName + "_small_1" + ".png", folderPath + fileName + "_large_1" + ".png")
         app.hideButton("Picture One")
-        app.reloadImage("img1", "image_small1.gif")
+        app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
         takePic("image_small2.gif", "image_large2.jpg")
