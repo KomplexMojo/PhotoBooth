@@ -70,16 +70,19 @@ def verifyemail(button):
 
 def takepic(btn):
     if btn == "Picture One":
+        sleep(2)
         takePic(fileName + "_small_1" + ".png", fileName + "_large_1" + ".png")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
+        sleep(2)
         takePic(fileName + "_small_2" + ".png", fileName + "_large_2" + ".png")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + fileName + "_small_2" + ".png")
         app.showImage("img2")
     elif btn == "Picture Three":
+        sleep(2)
         takePic(fileName + "_small_3" + ".png", fileName + "_large_3" + ".png")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
@@ -109,7 +112,6 @@ def takePic(imagePreview, imageName):
         camera.resolution = (1080, 1920)
         camera.image_effect = 'none'
         camera.start_preview()
-        # Camera warm-up timegit
         sleep(2)
         camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
         sleep(1)
