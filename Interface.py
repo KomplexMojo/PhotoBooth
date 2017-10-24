@@ -95,7 +95,9 @@ def resetInterface():
     app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.clearEntry("emailtxt", callFunction=False,setFocus=True)
     app.showSubWindow("emailwin")
+
 
 
 def takePic(imagePreview, imageName):
@@ -155,7 +157,6 @@ app.hideImage("img3")
 app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Picture Window ============#
-
 
 #========= Start Email Window ============#
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
