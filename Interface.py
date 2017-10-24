@@ -97,7 +97,7 @@ def takePic(imagePreview, imageName):
         camera.resolution = (1080, 1920)
         camera.image_effect = 'none'
         camera.start_preview()
-        # Camera warm-up time
+        # Camera warm-up timegit
         sleep(2)
         camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
         camera.capture(folderPath + imageName)
