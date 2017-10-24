@@ -143,7 +143,7 @@ app.stopSubWindow()
 #========= Start Email Window ============#
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
 app.setSticky("nsew")
-app.startLabelFrame("Picture Three", 0, 2)
+app.startLabelFrame("Email Frame", 0, 2)
 app.setBg("white")
 app.setGeometry(emailwinsize)
 app.addValidationEntry("email", 0, 0)
