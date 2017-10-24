@@ -30,8 +30,8 @@ from time import sleep
 #from validate_email import validate_email
 
 emailwinsize="800x480"
-btnPaddingX=100
-btnPaddingY=120
+btnPaddingX=0
+btnPaddingY=0
 topPad=0
 sidePad=0
 picSmall=""
