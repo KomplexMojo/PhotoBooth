@@ -65,7 +65,7 @@ def verifyemail(button):
         folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "/"
         print(folderPath)
         app.hideSubWindow("emailwin")
-        app.showSubWindow("mainwin")
+        app.showSubWindow("picwin")
 
 
 def takepic(btn):
@@ -84,8 +84,19 @@ def takepic(btn):
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
+        sleep(5)
+        resetInterface()
     else:
         print('end')
+
+
+def resetInterface():
+    app.hideSubWindow("picwin")
+    app.addImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.addImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.addImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.showSubWindow("emailwin")
+
 
 
 def takePic(imagePreview, imageName):
@@ -100,8 +111,8 @@ def takePic(imagePreview, imageName):
         # Camera warm-up timegit
         sleep(2)
         camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
+        sleep(1)
         camera.capture(folderPath + imageName)
-        sleep(2)
         camera.stop_preview()
 
 # create a GUI variable called app
@@ -110,7 +121,7 @@ app.setBg("white")
 app.setFont(12)
 
 #========= Start Picture Window ============#
-app.startSubWindow("mainwin", modal=False)
+app.startSubWindow("picwin", modal=False)
 app.setGeometry(800,480)
 app.setBg("white")
 
@@ -157,8 +168,13 @@ app.setBg("white")
 app.setGeometry(emailwinsize)
 app.addValidationEntry("email", 0, 0)
 app.setEntryDefault("email", "Enter Email Address")
-app.setEntryMaxLength("email", 50)
+app.setEntryMaxLength("email", 100)
 app.addIconButton("Email", verifyemail, "mail", 0, 1)
+app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.")
+app.addLabel("step2", "Step 2 - Press the email button to confirm email address.")
+app.addLabel("step3", "Step 3 - In the next screen press a camera button.")
+app.addLabel("step4", "Step 4 - Pose for 3 seconds.")
+app.addLabel("step5", "When all three pictures are shown, a message will come up indicating the email was sent.")
 app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Email Window ============#
