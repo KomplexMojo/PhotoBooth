@@ -27,31 +27,42 @@
 from appJar import gui
 from picamera import PiCamera
 from time import sleep
-#from validate_email import validate_email
+import re
+import string
+
 
 emailwinsize="800x480"
-btnPaddingX=0
-btnPaddingY=0
+btnPaddingX=100
+btnPaddingY=120
 topPad=0
 sidePad=0
 picSmall=""
 picLarge=""
 
-isvalid = True
-def confirm(button):
-    global isvalid
-    #eml=app.getEntry("email")
-    app.hideSubWindow("emailwin")
-    app.showSubWindow("mainwin")
+isValid = False
+emailFolder = ""
+match = None
+folderPath = ""
 
- #   isvalid = validate_email(eml)
-    #if isvalid: app.setEntryValid("email")
-    #else:
-    #    app.setEntryInvalid("email")
-    #    app.updateEntryDefault("email", "Enter Valid Email")
-    #    isvalid = not isvalid;
+def verifyemail(button):
+    global isValid
+    global emailFolder
+    global match
+    global folderPath
 
-clicked = False
+    addressToVerify = app.getEntry("email")
+    match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
+
+    if match is None:
+        app.setEntryInvalid("email")
+    else:
+        app.setEntryValid("email")
+        folderPath = addressToVerify.translate({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"})
+        print(folderPath)
+        app.hideSubWindow("emailwin")
+        app.showSubWindow("mainwin")
+
+
 def takepic(btn):
     if btn == "Picture One":
         takePic("image_small1.gif", "image_large1.gif")
@@ -85,11 +96,13 @@ def takePic(imagePreview, imageName):
         camera.capture(imagePreview, format='gif', resize=(216, 384))
         camera.stop_preview()
 
+
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "fullscreen")
 app.setBg("white")
 app.setFont(12)
 
+#========= Start Picture Window ============#
 app.startSubWindow("mainwin", modal=False)
 app.setGeometry(800,480)
 app.setBg("white")
@@ -123,17 +136,23 @@ app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.addImage("img3", "image_small.gif")
 app.hideImage("img3")
 app.stopLabelFrame()
-
 app.stopSubWindow()
+#========= Stop Picture Window ============#
 
+
+#========= Start Email Window ============#
 app.startSubWindow("emailwin","Enter Email Address", modal=True)
+app.setSticky("nsew")
+app.startLabelFrame("Picture Three", 0, 2)
 app.setBg("white")
 app.setGeometry(emailwinsize)
 app.addValidationEntry("email", 0, 0)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
 app.addIconButton("Email", confirm, "mail", 0, 1)
+app.stopLabelFrame()
 app.stopSubWindow()
+#========= Stop Email Window ============#
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
