@@ -32,7 +32,7 @@ import os
 import string
 
 
-winsize="800x474"
+winsize="800x470"
 btnPaddingX=100
 btnPaddingY=120
 topPad=0
@@ -164,7 +164,7 @@ app.setGeometry(winsize)
 app.setBg("white")
 app.setSticky("nsew")
 
-app.startLabelFrame("Email Frame", 0, 0)
+app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
 app.setBg("white")
 
 app.addValidationEntry("emailtxt", 0, 1)
