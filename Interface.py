@@ -32,7 +32,7 @@ import os
 import string
 
 
-winsize="800x468"
+winsize="800x470"
 btnPaddingX=100
 btnPaddingY=120
 topPad=0
@@ -128,8 +128,8 @@ app.setBg("white")
 
 app.setSticky("ns")
 app.startLabelFrame("Picture One", 0, 0)
-#app.setInPadding([btnPaddingX, btnPaddingY])
-#app.setPadding([sidePad, topPad])
+app.setInPadding([btnPaddingX, btnPaddingY])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.addImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
@@ -138,8 +138,8 @@ app.stopLabelFrame()
 
 app.setSticky("ns")
 app.startLabelFrame("Picture Two", 0, 1)
-#app.setInPadding([btnPaddingX, btnPaddingY])
-#app.setPadding([sidePad, topPad])
+app.setInPadding([btnPaddingX, btnPaddingY])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.addImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
@@ -148,8 +148,8 @@ app.stopLabelFrame()
 
 app.setSticky("ns")
 app.startLabelFrame("Picture Three", 0, 2)
-#app.setInPadding([btnPaddingX, btnPaddingY])
-#app.setPadding([sidePad, topPad])
+app.setInPadding([btnPaddingX, btnPaddingY])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.addImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
