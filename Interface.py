@@ -59,7 +59,7 @@ def verifyemail(button):
     else:
         app.setEntryValid("email")
         print(addressToVerify)
-        folderPath = addressToVerify({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"})
+        folderPath = addressToVerify.translate({ord(c): "_" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"})
         print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("mainwin")
