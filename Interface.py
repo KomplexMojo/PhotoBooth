@@ -32,8 +32,8 @@ from time import sleep
 emailwinsize="800x480"
 btnPaddingX=100
 btnPaddingY=120
-topPad=20
-sidePad=10
+topPad=0
+sidePad=0
 picSmall=""
 picLarge=""
 
