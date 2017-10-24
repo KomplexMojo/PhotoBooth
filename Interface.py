@@ -99,9 +99,9 @@ def takePic(imagePreview, imageName):
         camera.start_preview()
         # Camera warm-up time
         sleep(2)
+        camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
         camera.capture(folderPath + imageName)
         sleep(2)
-        camera.capture(folderPath + imageName, format='png', resize=(216, 384))
         camera.stop_preview()
 
 # create a GUI variable called app
