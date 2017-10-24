@@ -53,14 +53,14 @@ def verifyemail(button):
     global folderPath
     global fileName
 
-    addressToVerify = app.getEntry("email")
+    addressToVerify = app.getEntry("emailtxt")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
     #print(match.group())
 
     if match is None:
-        app.setEntryInvalid("email")
+        app.setEntryInvalid("emailtxt")
     else:
-        app.setEntryValid("email")
+        app.setEntryValid("emailtxt")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
         folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "/"
         print(folderPath)
@@ -166,17 +166,22 @@ app.setSticky("nsew")
 app.startLabelFrame("Email Frame", 0, 0)
 app.setBg("white")
 app.setGeometry(emailwinsize)
-app.addValidationEntry("email", 0, 1)
-app.setEntryDefault("email", "Enter Email Address")
-app.setEntryMaxLength("email", 100)
-app.addIconButton("Email", verifyemail, "mail", 0, 2)
+
+app.addValidationEntry("emailtxt", 0, 1)
+app.setEntryDefault("emailtxt", "Enter Email Address")
+app.setEntryMaxLength("emailtxt", 100)
+app.setEntrySticky("emailtxt","ew")
+
+app.addIconButton("emailbtn", verifyemail, "mail", 0, 2)
+app.setButtonPadding("emailbtn", [10, 10])
+
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
 app.getLabelWidget("step1").config(font="Verdana 16  underline")
 app.addLabel("step2", "Step 2 - Press the email button to confirm email address.", 2, 0, 2)
 app.getLabelWidget("step2").config(font="Verdana 16  underline")
 app.addLabel("step3", "Step 3 - In the next screen press a camera button (left to right).", 3, 0, 2)
 app.getLabelWidget("step3").config(font="Verdana 16  underline")
-app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 1, 0, 2)
+app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 4, 0, 2)
 app.getLabelWidget("step4").config(font="Verdana 16  bold underline")
 app.addLabel("step5", "When all three pictures are shown, a message will come up indicating the email was sent.", 4, 0, 2)
 app.getLabelWidget("step5").config(font="Verdana 12 italic")
