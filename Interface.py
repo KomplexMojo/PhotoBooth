@@ -58,7 +58,7 @@ def verifyemail(button):
         app.setEntryInvalid("email")
     else:
         app.setEntryValid("email")
-        folderPath = re.sub('[^a-zA-Z0-9 \n\.]', '_', match.group(0))
+        folderPath = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
         print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("mainwin")
