@@ -149,7 +149,7 @@ app.setGeometry(emailwinsize)
 app.addValidationEntry("email", 0, 0)
 app.setEntryDefault("email", "Enter Email Address")
 app.setEntryMaxLength("email", 50)
-app.addIconButton("Email", confirm, "mail", 0, 1)
+app.addIconButton("Email", verifyemail, "mail", 0, 1)
 app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Email Window ============#
