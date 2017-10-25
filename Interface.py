@@ -137,8 +137,9 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
 
     msg.attach(MIMEText(text))
 
+    print(files)
+
     for f in files or []:
-        print(f)
         with open(f, "rb") as fil:
             part = MIMEApplication(
                 fil.read(),
