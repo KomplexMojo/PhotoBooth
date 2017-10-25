@@ -64,7 +64,7 @@ def verifyemail(button):
 
     addressToVerify = app.getEntry("emailtxt")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
-    #print(match.group())
+    addressToVerify = match.group(0)
 
     if match is None:
         app.setEntryInvalid("emailtxt")
@@ -131,7 +131,7 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
 
     msg = MIMEMultipart()
     msg['From'] = send_from
-    msg['To'] = COMMASPACE.join(send_to)
+    msg['To'] = send_to
     msg['Date'] = formatdate(localtime=True)
     msg['Subject'] = subject
 
