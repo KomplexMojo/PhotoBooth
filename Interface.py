@@ -43,7 +43,7 @@ winsize="800x470"
 btnPaddingX=50
 btnPaddingY=50
 topPad=0
-sidePad=0
+sidePad=10
 picSmall=""
 picLarge=""
 
