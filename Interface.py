@@ -40,8 +40,8 @@ import string
 
 
 winsize="800x470"
-btnPaddingX=100
-btnPaddingY=120
+btnPaddingX=50
+btnPaddingY=50
 topPad=0
 sidePad=0
 picSmall=""
