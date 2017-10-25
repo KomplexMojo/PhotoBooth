@@ -29,6 +29,13 @@ from picamera import PiCamera
 from time import sleep
 import re
 import os
+import uuid
+import smtplib
+from os.path import basename
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.utils import COMMASPACE, formatdate
 import string
 
 
@@ -62,7 +69,7 @@ def verifyemail(button):
     else:
         app.setEntryValid("emailtxt")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
-        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "/"
+        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4()) + "/"
         print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("picwin")
@@ -87,20 +94,17 @@ def takepic(btn):
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
-        sleep(3)
-        resetInterface()
     else:
         print('end')
 
 
 def resetInterface():
-    app.clearEntry("emailtxt", callFunction=False, setFocus=True)
     app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
+    app.clearEntry("emailtxt", callFunction=False, setFocus=True)
     app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-
 
 
 def takePic(imagePreview, imageName):
@@ -118,6 +122,33 @@ def takePic(imagePreview, imageName):
         camera.capture(folderPath + imageName)
         camera.stop_preview()
 
+
+def send_mail(send_from, send_to, subject, text, files=None,
+              server="127.0.0.1"):
+    assert isinstance(send_to, list)
+
+    msg = MIMEMultipart()
+    msg['From'] = send_from
+    msg['To'] = COMMASPACE.join(send_to)
+    msg['Date'] = formatdate(localtime=True)
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(text))
+
+    for f in files or []:
+        with open(f, "rb") as fil:
+            part = MIMEApplication(
+                fil.read(),
+                Name=basename(f)
+            )
+        # After the file is closed
+        part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+        msg.attach(part)
+
+    smtp = smtplib.SMTP(server)
+    smtp.sendmail(send_from, send_to, msg.as_string())
+    smtp.close()
+
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "fullscreen")
 app.setBg("white")
@@ -128,35 +159,35 @@ app.startSubWindow("picwin", modal=False)
 app.setGeometry(winsize)
 app.setBg("white")
 
-app.setSticky("ns")
-app.startLabelFrame("Picture One", 0, 0)
-app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([sidePad, topPad])
-app.setBg("white")
+#app.setSticky("ns")
+#app.startLabelFrame("Picture One", 0, 0)
+#app.setInPadding([btnPaddingX, btnPaddingY])
+#app.setPadding([sidePad, topPad])
+#app.setBg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo")
 app.addImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
 app.hideImage("img1")
-app.stopLabelFrame()
+#app.stopLabelFrame()
 
-app.setSticky("ns")
-app.startLabelFrame("Picture Two", 0, 1)
-app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([sidePad, topPad])
-app.setBg("white")
+#app.setSticky("ns")
+#app.startLabelFrame("Picture Two", 0, 1)
+#app.setInPadding([btnPaddingX, btnPaddingY])
+#app.setPadding([sidePad, topPad])
+#app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo")
 app.addImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
 app.hideImage("img2")
-app.stopLabelFrame()
+#app.stopLabelFrame()
 
-app.setSticky("ns")
-app.startLabelFrame("Picture Three", 0, 2)
-app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([sidePad, topPad])
-app.setBg("white")
+#app.setSticky("ns")
+#app.startLabelFrame("Picture Three", 0, 2)
+#app.setInPadding([btnPaddingX, btnPaddingY])
+#app.setPadding([sidePad, topPad])
+#app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo")
 app.addImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
 app.hideImage("img3")
-app.stopLabelFrame()
+#app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Picture Window ============#
 
