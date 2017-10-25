@@ -156,7 +156,7 @@ app.setBg("white")
 
 #========= Start Picture Window ============#
 app.startSubWindow("picwin", modal=False)
-#app.setGeometry(winsize)
+app.setGeometry(winsize)
 app.setBg("white")
 
 #app.setSticky("ns")
