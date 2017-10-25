@@ -52,6 +52,7 @@ emailFolder = ""
 match = None
 folderPath = ""
 fileName = ""
+addressToVerify = ""
 
 def verifyemail(button):
     global isValid
@@ -59,6 +60,7 @@ def verifyemail(button):
     global match
     global folderPath
     global fileName
+    global addressToVerify
 
     addressToVerify = app.getEntry("emailtxt")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
@@ -121,6 +123,8 @@ def takePic(imagePreview, imageName):
         sleep(1)
         camera.capture(folderPath + imageName)
         camera.stop_preview()
+
+    send_mail("2rgmenagerie@gmail.com", "2rgmenagerie@gmail.com", "test email", folderPath + imageName)
 
 
 def send_mail(send_from, send_to, subject, text, files=None,
