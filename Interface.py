@@ -124,7 +124,7 @@ def takePic(imagePreview, imageName):
         camera.capture(folderPath + imageName)
         camera.stop_preview()
 
-    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", folderPath + imageName)
+    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", folderPath + imageName)
 
 
 def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
