@@ -127,7 +127,7 @@ def takePic(imagePreview, imageName):
     send_mail("2rgmenagerie@gmail.com", "2rgmenagerie@gmail.com", "test email", folderPath + imageName)
 
 
-def send_mail(send_from, send_to, subject, text, files=None, server="127.0.0.1"):
+def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
 
     msg = MIMEMultipart()
     msg['From'] = send_from
@@ -147,7 +147,7 @@ def send_mail(send_from, send_to, subject, text, files=None, server="127.0.0.1")
         part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
         msg.attach(part)
 
-    smtp = smtplib.SMTP(server)
+    smtp = smtplib.SMTP(server,587)
     smtp.sendmail(send_from, send_to, msg.as_string())
     smtp.close()
 
