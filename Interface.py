@@ -124,6 +124,7 @@ def takePic(imagePreview, imageName):
         camera.capture(folderPath + imageName)
         camera.stop_preview()
 
+    print(folderPath + imageName)
     send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", folderPath + imageName)
 
 
@@ -136,8 +137,6 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
     msg['Subject'] = subject
 
     msg.attach(MIMEText(text))
-
-    print(files)
 
     for f in files or []:
         with open(f, "rb") as fil:
