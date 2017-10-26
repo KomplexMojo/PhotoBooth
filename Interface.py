@@ -135,15 +135,11 @@ def camera(imageName):
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
 
-    print(folderPath)
-
     with PiCamera() as camera:
         camera.resolution = (largeImageWidth, largeImageWidth)
         camera.image_effect = 'none'
         camera.start_preview()
-        sleep(2)
-        #camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
-        sleep(1)
+        sleep(3)
         camera.capture(folderPath + imageName)
         files.append(folderPath + imageName)
         camera.stop_preview()
