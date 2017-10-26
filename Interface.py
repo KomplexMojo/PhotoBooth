@@ -67,18 +67,18 @@ def verifyemail(button):
     global fileName
     global addressToVerify
 
-    addressToVerify = app.getEntry("emailtxt")
+    addressToVerify = app.getEntry("Email Checker")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
     addressToVerify = match.group(0)
 
     if match is None:
-        app.setEntryInvalid("emailtxt")
+        app.setEntryInvalid("Email Checker")
     else:
-        app.setEntryValid("emailtxt")
+        app.setEntryValid("Email Checker")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
         folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4())[:4] + "/"
         app.hideSubWindow("emailwin")
-        app.showSubWindow("picwin")
+        app.showSubWindow("Picture Viewer")
 
 
 def takepic(btn):
@@ -111,11 +111,10 @@ def takepic(btn):
 def resetwins(btn):
     global files
 
-    print(files)
     sendmail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
     app.showSubWindow("emailwin")
-    app.hideSubWindow("picwin")
-    app.clearEntry("emailtxt", callFunction=False, setFocus=True)
+    app.hideSubWindow("Picture Viewer")
+    app.clearEntry("Email Checker", callFunction=False, setFocus=True)
     app.hideImage("img1")
     app.hideImage("img2")
     app.hideImage("img3")
@@ -181,7 +180,7 @@ app.setBg("white")
 #app.setFont(12)
 
 #========= Start Picture Window ============#
-app.startSubWindow("picwin", modal=False)
+app.startSubWindow("Picture Viewer", modal=False)
 app.setGeometry(winsize)
 app.setBg("white")
 
@@ -218,7 +217,7 @@ app.stopSubWindow()
 #========= Stop Picture Window ============#
 
 #========= Start Email Window ============#
-app.startSubWindow("emailwin","Enter Email Address", modal=True)
+app.startSubWindow("emailwin", "Enter Email Address", modal=True)
 app.setGeometry(winsize)
 app.setBg("white")
 app.setSticky("nsew")
@@ -226,11 +225,11 @@ app.setSticky("nsew")
 app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
 app.setBg("white")
 
-app.addValidationEntry("emailtxt", 0, 1)
-app.getEntryWidget("emailtxt").config(font="Verdana 12 normal")
-app.setEntryDefault("emailtxt", "Enter Email Address")
-app.setEntryMaxLength("emailtxt", 100)
-app.setEntryWidth("emailtxt", 50)
+app.addValidationEntry("Email Checker", 0, 1)
+app.getEntryWidget("Email Checker").config(font="Verdana 12 normal")
+app.setEntryDefault("Email Checker", "Enter Email Address")
+app.setEntryMaxLength("Email Checker", 100)
+app.setEntryWidth("Email Checker", 50)
 
 app.addIconButton("emailbtn", verifyemail, "mail", 0, 2)
 app.setButtonPadding("emailbtn", [10, 10])
