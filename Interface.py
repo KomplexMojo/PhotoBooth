@@ -76,15 +76,13 @@ def verifyemail(button):
     else:
         app.setEntryValid("emailtxt")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
-        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4()) + "/"
+        folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4())[:4] + "/"
         app.hideSubWindow("emailwin")
         app.showSubWindow("picwin")
 
 
 def takepic(btn):
     global files
-
-    files[:] = []
 
     if btn == "Picture One":
         camera(fileName + "_large_1" + ".png")
@@ -111,6 +109,9 @@ def takepic(btn):
 
 
 def resetwins(btn):
+    global files
+
+    print(files)
     sendmail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
     app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
@@ -121,11 +122,12 @@ def resetwins(btn):
     app.showButton("Picture One")
     app.showButton("Picture Two")
     app.showButton("Picture Three")
+    files[:] = []
 
 
 def resize(original, small):
     image = Image.open(folderPath + original)
-    image.thumbnail((108, 192), Image.ANTIALIAS)
+    image.thumbnail((int(largeImageWidth*.2), int(largeImageHeight*2)), Image.ANTIALIAS)
     image.save(folderPath + small, 'GIF', quality=50)
 
 
@@ -141,14 +143,11 @@ def camera(imageName):
         camera.start_preview()
         sleep(3)
         camera.capture(folderPath + imageName)
-        print(folderPath + imageName)
         files.append(folderPath + imageName)
         camera.stop_preview()
 
 
 def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
-
-    print(files)
 
     msg = MIMEMultipart()
     msg['From'] = send_from
