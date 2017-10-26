@@ -139,6 +139,8 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
 
     msg.attach(MIMEText(text))
 
+    print(files)
+
     for f in files or []:
         with open(f, "rb") as fil:
             part = MIMEApplication(
@@ -233,7 +235,7 @@ app.stopSubWindow()
 #========= Stop Email Window ============#
 
 app.startSubWindow("resetwin","Reset Window", modal=True)
-app.setGeometry(winsize)
+app.setGeometry("200x200")
 app.setBg("white")
 app.setSticky("nsew")
 
