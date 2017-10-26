@@ -112,7 +112,7 @@ def reset_interface():
 
 
 def takePic(imagePreview, imageName):
-    global files[]
+    global files
 
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
