@@ -148,6 +148,8 @@ def camera(imageName):
 
 def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
 
+    print(files)
+
     msg = MIMEMultipart()
     msg['From'] = send_from
     msg['To'] = send_to
