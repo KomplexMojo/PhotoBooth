@@ -64,8 +64,7 @@ emailHTMLBody= """\
 <html>
   <head></head>
   <body>
-    <p>Pictures from Menagerie 2017</p>
-    <img src="./SourceImages/Menagerie-web-slider.jpg" alt="Thanks for Attending TwoRiversGallery Menagerie 2017 - Banished to the Bayou">
+    <p>Thanks for Attending TwoRiversGallery Menagerie 2017 - Banished to the Bayou</p>
   </body>
 </html>
 """
@@ -102,21 +101,21 @@ def takepic(btn):
     if btn == "Picture One":
         sequence = "1"
         camera(largePicFile + sequence + ".png")
-        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".png")
+        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".gif")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img1")
     elif btn == "Picture Two":
         sequence = "2"
         camera(largePicFile + sequence + ".png")
-        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".png")
+        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".gif")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img2")
     elif btn == "Picture Three":
         sequence = "3"
         camera(largePicFile + sequence + ".png")
-        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".png")
+        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".gif")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img3")
@@ -173,16 +172,16 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
 
     msg.attach(MIMEText(emailHTMLBody, 'html'))
 
-    # for f in files or []:
-    #     with open(f, "rb") as fil:
-    #         part = MIMEApplication(
-    #             fil.read(),
-    #             Name=basename(f)
-    #         )
-    #
-    #     # After the file is closed
-    #     part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
-    #     msg.attach(part)
+    for f in files or []:
+        with open(f, "rb") as fil:
+            part = MIMEApplication(
+                fil.read(),
+                Name=basename(f)
+            )
+
+         # After the file is closed
+        part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+        msg.attach(part)
 
     smtp = smtplib.SMTP(server, 587)
     smtp.ehlo()
