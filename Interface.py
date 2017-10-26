@@ -89,19 +89,19 @@ def takepic(btn):
 
     if btn == "Picture One":
         camera(fileName + "_large_1" + ".png")
-        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".png")
+        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".gif")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
         camera(fileName + "_large_1" + ".png")
-        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".png")
+        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".gif")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + fileName + "_small_2" + ".png")
         app.showImage("img2")
     elif btn == "Picture Three":
         camera(fileName + "_large_1" + ".png")
-        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".png")
+        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".gif")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
@@ -126,13 +126,15 @@ def resetwins(btn):
 def resize(original, small):
     image = Image.open(original)
     image.thumbnail((108, 192), Image.ANTIALIAS)
-    image.save(small, 'PNG', quality=50)
+    image.save(small, 'GIF', quality=50)
 
 def camera(imageName):
     global files
 
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
+
+    print(folderPath)
 
     with PiCamera() as camera:
         camera.resolution = (largeImageWidth, largeImageWidth)
