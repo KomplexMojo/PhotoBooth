@@ -146,7 +146,7 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
         )
 
     # After the file is closed
-    part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+    part['Content-Disposition'] = 'attachment; filename="%s"' % basename(files)
     msg.attach(part)
 
     smtp = smtplib.SMTP(server,587)
