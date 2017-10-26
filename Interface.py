@@ -81,17 +81,17 @@ def verifyemail(button):
 
 def takepic(btn):
     if btn == "Picture One":
-        takepic(fileName + "_small_1" + ".png", fileName + "_large_1" + ".png")
+        camera(fileName + "_small_1" + ".png", fileName + "_large_1" + ".png")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
-        takepic(fileName + "_small_2" + ".png", fileName + "_large_2" + ".png")
+        camera(fileName + "_small_2" + ".png", fileName + "_large_2" + ".png")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + fileName + "_small_2" + ".png")
         app.showImage("img2")
     elif btn == "Picture Three":
-        takepic(fileName + "_small_3" + ".png", fileName + "_large_3" + ".png")
+        camera(fileName + "_small_3" + ".png", fileName + "_large_3" + ".png")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
@@ -101,7 +101,7 @@ def takepic(btn):
         print('end')
 
 
-def resetwins():
+def resetwins(btn):
     send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
     app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
@@ -111,7 +111,7 @@ def resetwins():
     app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
 
 
-def takepic(imagePreview, imageName):
+def camera(imagePreview, imageName):
     global files
 
     if not os.path.exists(folderPath):
