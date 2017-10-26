@@ -77,7 +77,6 @@ def verifyemail(button):
         app.setEntryValid("emailtxt")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
         folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4()) + "/"
-        #print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("picwin")
 
@@ -94,14 +93,14 @@ def takepic(btn):
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".gif")
         app.showImage("img1")
     elif btn == "Picture Two":
-        camera(fileName + "_large_1" + ".png")
-        resize(fileName + "_large_1" + ".png", fileName + "_small_1" + ".gif")
+        camera(fileName + "_large_2" + ".png")
+        resize(fileName + "_large_2" + ".png", fileName + "_small_2" + ".gif")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + fileName + "_small_2" + ".gif")
         app.showImage("img2")
     elif btn == "Picture Three":
-        camera(fileName + "_large_1" + ".png")
-        resize(fileName + "_large_1" + ".png", fileName + "_small_1" + ".gif")
+        camera(fileName + "_large_3" + ".png")
+        resize(fileName + "_large_3" + ".png", fileName + "_small_3" + ".gif")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".gif")
         app.showImage("img3")
@@ -123,10 +122,12 @@ def resetwins(btn):
     app.showButton("Picture Two")
     app.showButton("Picture Three")
 
+
 def resize(original, small):
     image = Image.open(folderPath + original)
     image.thumbnail((108, 192), Image.ANTIALIAS)
     image.save(folderPath + small, 'GIF', quality=50)
+
 
 def camera(imageName):
     global files
