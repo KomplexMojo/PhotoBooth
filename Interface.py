@@ -64,10 +64,8 @@ emailHTMLBody= """\
 <html>
   <head></head>
   <body>
-    <p>Thanks for Attending TwoRiversGallery Menagerie 2017 - Banished to the Bayou<br>
-       How are you?<br>
-       Here is the <a href="http://www.python.org">link</a> you wanted.
-    </p>
+    <p>Pictures from Menagerie 2017</p>
+    <img src="./SourceImages/Menagerie-web-slider.jpg" alt="Thanks for Attending TwoRiversGallery Menagerie 2017 - Banished to the Bayou">
   </body>
 </html>
 """
