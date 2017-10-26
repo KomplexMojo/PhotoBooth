@@ -254,7 +254,6 @@ app.stopSubWindow()
 app.startSubWindow("resetwin","Reset Window", modal=True)
 app.setGeometry("250x250")
 app.setBg("white")
-app.setSticky("nsew")
 
 app.startLabelFrame("Reset Window", 0, 0)
 
