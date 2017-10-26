@@ -243,6 +243,7 @@ app.startLabelFrame("Reset Window", 0, 0)
 
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
+app.setSticky("nsew")
 app.addIconButton("Reload Interface", resetwins, "md-reload", 0, 0)
 app.stopLabelFrame()
 
