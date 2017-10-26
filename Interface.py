@@ -236,12 +236,12 @@ app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Email Window ============#
 
-app.startSubWindow("resetwin","Enter Email Address", modal=True)
+app.startSubWindow("resetwin","Reset Window", modal=True)
 app.setGeometry(winsize)
 app.setBg("white")
 app.setSticky("nsew")
 
-app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
+app.startLabelFrame("Reset Window", 0, 0)
 
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
