@@ -57,8 +57,10 @@ folderPath = ""
 fileName = ""
 addressToVerify = ""
 files = []
+sendingEmailAddress="2rgmenagerie@gmail.com"
 
-text="<html><head></head><body><p>This is a sample web page from thesitewizard.com's HTML tutorial.</p></body></html>"
+emailSubject="TwoRiversGallery Menagerie 2017 - Banished to the Bayou"
+emailHTMLBody="<html><head></head><body><p>This is a sample web page from thesitewizard.com's HTML tutorial.</p></body></html>"
 
 def verifyemail(button):
     global isValid
@@ -112,7 +114,7 @@ def takepic(btn):
 def resetwins(btn):
     global files
 
-    sendmail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
+    sendmail(sendingEmailAddress, addressToVerify, emailSubject, emailHTMLBody, files)
     app.showSubWindow("emailwin")
     app.hideSubWindow("Picture Viewer")
     app.clearEntry("Email Checker", callFunction=False, setFocus=True)
