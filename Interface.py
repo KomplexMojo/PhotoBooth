@@ -36,6 +36,7 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
+from PIL import Image
 import string
 
 
@@ -46,6 +47,8 @@ topPad=0
 sidePad=10
 picSmall=""
 picLarge=""
+largeImageWidth=1080
+largeImageHeight=1920
 
 isValid = False
 emailFolder = ""
@@ -80,18 +83,25 @@ def verifyemail(button):
 
 
 def takepic(btn):
+    global files
+
+    files = None
+
     if btn == "Picture One":
-        camera(fileName + "_small_1" + ".png", fileName + "_large_1" + ".png")
+        camera(fileName + "_large_1" + ".png")
+        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".png")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
-        camera(fileName + "_small_2" + ".png", fileName + "_large_2" + ".png")
+        camera(fileName + "_large_1" + ".png")
+        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".png")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + fileName + "_small_2" + ".png")
         app.showImage("img2")
     elif btn == "Picture Three":
-        camera(fileName + "_small_3" + ".png", fileName + "_large_3" + ".png")
+        camera(fileName + "_large_1" + ".png")
+        resize(fileName + "_large_1" + ".png", folderPath + fileName + "_small_1" + ".png")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
@@ -113,19 +123,23 @@ def resetwins(btn):
     app.showButton("Picture Two")
     app.showButton("Picture Three")
 
+def resize(original, small):
+    image = Image.open(original)
+    image.thumbnail((108, 192), Image.ANTIALIAS)
+    image.save(small, 'PNG', quality=50)
 
-def camera(imagePreview, imageName):
+def camera(imageName):
     global files
 
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
 
     with PiCamera() as camera:
-        camera.resolution = (1080, 1920)
+        camera.resolution = (largeImageWidth, largeImageWidth)
         camera.image_effect = 'none'
         camera.start_preview()
         sleep(2)
-        camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
+        #camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
         sleep(1)
         camera.capture(folderPath + imageName)
         files.append(folderPath + imageName)
