@@ -157,16 +157,16 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
 
     msg.attach(MIMEText(text))
 
-    for f in files or []:
-        with open(f, "rb") as fil:
-            part = MIMEApplication(
-                fil.read(),
-                Name=basename(f)
-            )
-
-        # After the file is closed
-        part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
-        msg.attach(part)
+    # for f in files or []:
+    #     with open(f, "rb") as fil:
+    #         part = MIMEApplication(
+    #             fil.read(),
+    #             Name=basename(f)
+    #         )
+    #
+    #     # After the file is closed
+    #     part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+    #     msg.attach(part)
 
     smtp = smtplib.SMTP(server, 587)
     smtp.ehlo()
