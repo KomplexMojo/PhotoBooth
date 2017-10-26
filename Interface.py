@@ -102,7 +102,7 @@ def takepic(btn):
 
 
 def resetwins(btn):
-    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
+    sendmail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
     app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
     app.clearEntry("emailtxt", callFunction=False, setFocus=True)
@@ -128,11 +128,8 @@ def camera(imagePreview, imageName):
         files.append(folderPath + imageName)
         camera.stop_preview()
 
-    #print(folderPath + imageName)
-    #send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", folderPath + imageName)
 
-
-def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
+def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
 
     msg = MIMEMultipart()
     msg['From'] = send_from
@@ -155,7 +152,6 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
 
     smtp = smtplib.SMTP(server, 587)
     smtp.ehlo()
-    # test
     smtp.starttls()
     smtp.login("2rgmenagerie@gmail.com", "makerlab1")
     smtp.sendmail(send_from, send_to, msg.as_string())
@@ -245,7 +241,7 @@ app.startLabelFrame("Reset Window", 0, 0)
 
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
-app.setBg("white")
+app.setSticky("nsew")
 app.addIconButton("Reload Interface", resetwins, "md-reload", 0, 0)
 app.stopLabelFrame()
 
