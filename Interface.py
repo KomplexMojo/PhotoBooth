@@ -58,6 +58,7 @@ fileName = ""
 addressToVerify = ""
 files = []
 
+text="<html><head></head><body><p>This is a sample web page from thesitewizard.com's HTML tutorial.</p></body></html>"
 
 def verifyemail(button):
     global isValid
