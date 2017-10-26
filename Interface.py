@@ -53,6 +53,7 @@ match = None
 folderPath = ""
 fileName = ""
 addressToVerify = ""
+files = []
 
 def verifyemail(button):
     global isValid
@@ -79,37 +80,39 @@ def verifyemail(button):
 
 def takepic(btn):
     if btn == "Picture One":
-        sleep(2)
         takePic(fileName + "_small_1" + ".png", fileName + "_large_1" + ".png")
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + fileName + "_small_1" + ".png")
         app.showImage("img1")
     elif btn == "Picture Two":
-        sleep(2)
         takePic(fileName + "_small_2" + ".png", fileName + "_large_2" + ".png")
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + fileName + "_small_2" + ".png")
         app.showImage("img2")
     elif btn == "Picture Three":
-        sleep(2)
         takePic(fileName + "_small_3" + ".png", fileName + "_large_3" + ".png")
         app.hideButton("Picture Three")
         app.reloadImage("img3", folderPath + fileName + "_small_3" + ".png")
         app.showImage("img3")
+        sleep(2)
+        app.showSubWindow("resetwin")
     else:
         print('end')
 
 
-def resetInterface():
+def reset_interface():
+    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
     app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
     app.clearEntry("emailtxt", callFunction=False, setFocus=True)
     app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
 
 
 def takePic(imagePreview, imageName):
+    global files[]
 
     if not os.path.exists(folderPath):
         os.makedirs(folderPath)
@@ -122,10 +125,11 @@ def takePic(imagePreview, imageName):
         camera.capture(folderPath + imagePreview, format='png', resize=(216, 384))
         sleep(1)
         camera.capture(folderPath + imageName)
+        files.append(folderPath + imageName)
         camera.stop_preview()
 
-    print(folderPath + imageName)
-    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", folderPath + imageName)
+    #print(folderPath + imageName)
+    #send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", folderPath + imageName)
 
 
 def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.com"):
@@ -138,18 +142,18 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
 
     msg.attach(MIMEText(text))
 
-    #for f in files or []:
-    with open(files, "rb") as fil:
-        part = MIMEApplication(
-            fil.read(),
-            Name=basename(files)
-        )
+    for f in files or []:
+        with open(f, "rb") as fil:
+            part = MIMEApplication(
+                fil.read(),
+                Name=basename(f)
+            )
 
     # After the file is closed
-    part['Content-Disposition'] = 'attachment; filename="%s"' % basename(files)
+    part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
     msg.attach(part)
 
-    smtp = smtplib.SMTP(server,587)
+    smtp = smtplib.SMTP(server, 587)
     smtp.ehlo()
     # test
     smtp.starttls()
@@ -231,6 +235,23 @@ app.stopLabelFrame()
 
 app.stopSubWindow()
 #========= Stop Email Window ============#
+
+app.startSubWindow("resetwin","Enter Email Address", modal=True)
+app.setGeometry(winsize)
+app.setBg("white")
+app.setSticky("nsew")
+
+app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
+
+app.setInPadding([btnPaddingX, btnPaddingY])
+app.setPadding([sidePad, topPad])
+app.setBg("white")
+app.addIconButton("Picture One", reset_interface, "md-reload.png", 0, 0)
+app.stopLabelFrame()
+
+app.stopSubWindow()
+
+
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
