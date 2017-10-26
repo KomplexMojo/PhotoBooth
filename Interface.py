@@ -148,9 +148,9 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
                 Name=basename(f)
             )
 
-    # After the file is closed
-    part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
-    msg.attach(part)
+        # After the file is closed
+        part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+        msg.attach(part)
 
     smtp = smtplib.SMTP(server, 587)
     smtp.ehlo()
@@ -235,7 +235,7 @@ app.stopSubWindow()
 #========= Stop Email Window ============#
 
 app.startSubWindow("resetwin","Reset Window", modal=True)
-app.setGeometry("200x200")
+app.setGeometry("250x250")
 app.setBg("white")
 app.setSticky("nsew")
 
@@ -243,13 +243,10 @@ app.startLabelFrame("Reset Window", 0, 0)
 
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
-app.setSticky("nsew")
 app.addIconButton("Reload Interface", resetwins, "md-reload", 0, 0)
 app.stopLabelFrame()
 
 app.stopSubWindow()
-
-
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
