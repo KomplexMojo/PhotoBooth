@@ -246,7 +246,7 @@ app.startLabelFrame("Reset Window", 0, 0)
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setBg("white")
-app.addIconButton("Picture One", reset_interface, "md-reload.png", 0, 0)
+app.addIconButton("Reload Interface", reset_interface, "md-reload.png", 0, 0)
 app.stopLabelFrame()
 
 app.stopSubWindow()
