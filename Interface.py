@@ -77,7 +77,7 @@ def verifyemail(button):
         app.setEntryValid("emailtxt")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
         folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4()) + "/"
-        print(folderPath)
+        #print(folderPath)
         app.hideSubWindow("emailwin")
         app.showSubWindow("picwin")
 
@@ -85,7 +85,7 @@ def verifyemail(button):
 def takepic(btn):
     global files
 
-    files = None
+    files.clear()
 
     if btn == "Picture One":
         camera(fileName + "_large_1" + ".png")
