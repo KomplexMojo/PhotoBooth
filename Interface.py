@@ -246,7 +246,7 @@ app.setEntryDefault("Email Checker", "Enter Email Address")
 app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
-app.addIconButton("emailbtn", verifyemail, "mail", 0, 2)
+app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
 app.setButtonPadding("emailbtn", [10, 10])
 
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
@@ -273,7 +273,7 @@ app.startLabelFrame("Reset Window", 0, 0)
 app.setInPadding([btnPaddingX, btnPaddingY])
 app.setPadding([sidePad, topPad])
 app.setSticky("nsew")
-app.addIconButton("Reload Interface", resetwins, "md-reload", 0, 0)
+app.addIconButton("Reload Interface", resetwins, "mail", 0, 0)
 app.stopLabelFrame()
 
 app.stopSubWindow()
