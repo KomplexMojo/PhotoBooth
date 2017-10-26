@@ -136,11 +136,12 @@ def camera(imageName):
         os.makedirs(folderPath)
 
     with PiCamera() as camera:
-        camera.resolution = (largeImageWidth, largeImageWidth)
+        camera.resolution = (largeImageWidth, largeImageHeight)
         camera.image_effect = 'none'
         camera.start_preview()
         sleep(3)
         camera.capture(folderPath + imageName)
+        print(folderPath + imageName)
         files.append(folderPath + imageName)
         camera.stop_preview()
 
@@ -154,8 +155,6 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
     msg['Subject'] = subject
 
     msg.attach(MIMEText(text))
-
-    print(files)
 
     for f in files or []:
         with open(f, "rb") as fil:
