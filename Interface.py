@@ -108,7 +108,6 @@ def reset_interface():
     app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
     app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-    send_mail("2rgmenagerie@gmail.com", addressToVerify, "test email", "text", files)
 
 
 def takePic(imagePreview, imageName):
