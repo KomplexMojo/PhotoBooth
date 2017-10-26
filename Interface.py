@@ -95,25 +95,31 @@ def verifyemail(button):
 def takepic(btn):
     global files
 
+    largePicFile = str(uuid.uuid4())[:4]
+    smallPicFile = str(uuid.uuid4())[:4]
+    sequence = ""
+
     if btn == "Picture One":
-        camera(fileName + "_large_1" + ".png")
-        resize(fileName + "_large_1" + ".png", fileName + "_small_1" + ".gif")
+        sequence = "1"
+        camera(largePicFile + sequence + ".png")
+        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".png")
         app.hideButton("Picture One")
-        app.reloadImage("img1", folderPath + fileName + "_small_1" + ".gif")
+        app.reloadImage("img1", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img1")
     elif btn == "Picture Two":
-        camera(fileName + "_large_2" + ".png")
-        resize(fileName + "_large_2" + ".png", fileName + "_small_2" + ".gif")
+        sequence = "2"
+        camera(largePicFile + sequence + ".png")
+        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".png")
         app.hideButton("Picture Two")
-        app.reloadImage("img2", folderPath + fileName + "_small_2" + ".gif")
+        app.reloadImage("img2", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img2")
     elif btn == "Picture Three":
-        camera(fileName + "_large_3" + ".png")
-        resize(fileName + "_large_3" + ".png", fileName + "_small_3" + ".gif")
+        sequence = "3"
+        camera(largePicFile + sequence + ".png")
+        resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".png")
         app.hideButton("Picture Three")
-        app.reloadImage("img3", folderPath + fileName + "_small_3" + ".gif")
+        app.reloadImage("img3", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img3")
-        sleep(2)
         app.showSubWindow("resetwin")
     else:
         print('end')
