@@ -142,7 +142,7 @@ def send_mail(send_from, send_to, subject, text, files=None, server="smtp.gmail.
     with open(files, "rb") as fil:
         part = MIMEApplication(
             fil.read(),
-            Name=basename(f)
+            Name=basename(files)
         )
 
     # After the file is closed
