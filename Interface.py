@@ -106,9 +106,12 @@ def resetwins(btn):
     app.showSubWindow("emailwin")
     app.hideSubWindow("picwin")
     app.clearEntry("emailtxt", callFunction=False, setFocus=True)
-    app.reloadImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-    app.reloadImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.png")
-    app.reloadImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.png")
+    app.hideImage("img1")
+    app.hideImage("img2")
+    app.hideImage("img3")
+    app.showButton("Picture One")
+    app.showButton("Picture Two")
+    app.showButton("Picture Three")
 
 
 def camera(imagePreview, imageName):
