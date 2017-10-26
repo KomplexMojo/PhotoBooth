@@ -85,7 +85,7 @@ def verifyemail(button):
 def takepic(btn):
     global files
 
-    files.clear()
+    files[:] = []
 
     if btn == "Picture One":
         camera(fileName + "_large_1" + ".png")
