@@ -44,7 +44,7 @@ winsize="800x470"
 btnPaddingX=50
 btnPaddingY=50
 topPad=0
-sidePad=10
+sidePad=5
 picSmall=""
 picLarge=""
 largeImageWidth=1080
@@ -58,13 +58,12 @@ fileName = ""
 addressToVerify = ""
 files = []
 sendingEmailAddress="2rgmenagerie@gmail.com"
-
 emailSubject="TwoRiversGallery Menagerie 2017 - Banished to the Bayou"
 emailHTMLBody= """\
 <html>
   <head></head>
   <body>
-    <p>Thanks for Attending TwoRiversGallery Menagerie 2017 - Banished to the Bayou</p>
+    <p>Thank you for attending the TwoRiversGallery Menagerie 2017 - Banished to the Bayou</p>
   </body>
 </html>
 """
@@ -203,7 +202,7 @@ app.setBg("white")
 app.setSticky("ns")
 app.startLabelFrame("Picture One", 0, 0)
 app.setInPadding([btnPaddingX, btnPaddingY])
-#app.setPadding([sidePad, topPad])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture One", takepic, "md-camera-photo", 0, 0)
 app.addImage("img1", "/home/pi/PhotoBooth/SourceImages/default_small.gif", 0, 0)
@@ -213,7 +212,7 @@ app.stopLabelFrame()
 app.setSticky("ns")
 app.startLabelFrame("Picture Two", 0, 1)
 app.setInPadding([btnPaddingX, btnPaddingY])
-#app.setPadding([sidePad, topPad])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo", 0, 1)
 app.addImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.gif", 0, 1)
@@ -223,7 +222,7 @@ app.stopLabelFrame()
 app.setSticky("ns")
 app.startLabelFrame("Picture Three", 0, 2)
 app.setInPadding([btnPaddingX, btnPaddingY])
-#app.setPadding([sidePad, topPad])
+app.setPadding([sidePad, topPad])
 app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo", 0, 2)
 app.addImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.gif", 0, 2)
@@ -258,14 +257,14 @@ app.addLabel("step3", "Step 3 - In the next screen press a camera button (left t
 app.getLabelWidget("step3").config(font="Verdana 16 normal")
 app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 4, 0, 2)
 app.getLabelWidget("step4").config(font="Verdana 16 normal")
-app.addLabel("step5", "When all three pictures are shown, a message will come up indicating the email was sent.", 5, 0, 2)
+app.addLabel("step5", "When all three pictures are shown, press the refresh button to send the picture.", 5, 0, 2)
 app.getLabelWidget("step5").config(font="Verdana 12 italic")
 app.stopLabelFrame()
 
 app.stopSubWindow()
 #========= Stop Email Window ============#
 
-app.startSubWindow("resetwin","Reset Window", modal=True)
+app.startSubWindow("resetwin", "Reset Window", modal=True)
 app.setGeometry("250x250")
 app.setBg("white")
 
