@@ -60,7 +60,17 @@ files = []
 sendingEmailAddress="2rgmenagerie@gmail.com"
 
 emailSubject="TwoRiversGallery Menagerie 2017 - Banished to the Bayou"
-emailHTMLBody="<html><head></head><body><p>This is a sample web page from thesitewizard.com's HTML tutorial.</p></body></html>"
+emailHTMLBody= """\
+<html>
+  <head></head>
+  <body>
+    <p>Thanks for Attending TwoRiversGallery Menagerie 2017 - Banished to the Bayou<br>
+       How are you?<br>
+       Here is the <a href="http://www.python.org">link</a> you wanted.
+    </p>
+  </body>
+</html>
+"""
 
 def verifyemail(button):
     global isValid
@@ -157,7 +167,7 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
     msg['Date'] = formatdate(localtime=True)
     msg['Subject'] = subject
 
-    msg.attach(MIMEText(text))
+    msg.attach(MIMEText(emailHTMLBody, 'html'))
 
     # for f in files or []:
     #     with open(f, "rb") as fil:
