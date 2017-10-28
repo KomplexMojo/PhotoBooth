@@ -195,11 +195,10 @@ app = gui("MakerLab Photobooth by Darren", "fullscreen")
 app.setBg("white")
 
 #========= Start Email Verification Window ============#
-app.startSubWindow("emailwin", "Enter Email Address", modal=True)
 app.setGeometry(winsize)
+app.startSubWindow("emailwin", "Enter Email Address", modal=True)
 app.setBg("white")
-#app.setSticky("nsew")
-
+app.setSticky("nsew")
 app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
 app.setBg("white")
 
