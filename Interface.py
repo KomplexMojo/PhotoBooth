@@ -99,6 +99,7 @@ def takepic(btn):
     smallPicFile = str(uuid.uuid4())[:4]
 
     if btn == "Picture One":
+        sleep(5)
         sequence = "1"
         camera(largePicFile + sequence + ".png")
         resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".gif")
@@ -109,6 +110,7 @@ def takepic(btn):
         app.enableButton("Picture Two")
     elif btn == "Picture Two":
         sequence = "2"
+        sleep(5)
         camera(largePicFile + sequence + ".png")
         resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".gif")
         app.hideButton("Picture Two")
@@ -117,6 +119,7 @@ def takepic(btn):
         app.disableButton("Picture Two")
         app.enableButton("Picture Three")
     elif btn == "Picture Three":
+        sleep(5)
         sequence = "3"
         camera(largePicFile + sequence + ".png")
         resize(largePicFile + sequence + ".png", smallPicFile + sequence + ".gif")
