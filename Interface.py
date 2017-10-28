@@ -58,12 +58,12 @@ fileName = ""
 addressToVerify = ""
 files = []
 sendingEmailAddress="2rgmenagerie@gmail.com"
-emailSubject="TwoRiversGallery Menagerie 2017 - Banished to the Bayou"
+emailSubject="Two Rivers Gallery Menagerie 2017 - Banished to the Bayou"
 emailHTMLBody= """\
 <html>
   <head></head>
   <body>
-    <p>Thank you for attending the TwoRiversGallery Menagerie 2017 - Banished to the Bayou</p>
+    <p>Thank you for attending the Two Rivers Gallery Menagerie 2017 - Banished to the Bayou</p>
   </body>
 </html>
 """
@@ -209,7 +209,7 @@ app.setEntryDefault("Email Checker", "Enter Email Address")
 app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
-app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
+app.addIconButton("emailbtn", verifyemail, "check", 0, 2, 2, 2)
 app.setInPadding([30,30])
 
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
