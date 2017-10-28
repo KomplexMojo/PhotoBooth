@@ -249,7 +249,7 @@ app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
 app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
-app.setInButtonPadding("emailbtn", [20, 20])
+app.setInPadding([30,30])
 
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
 app.getLabelWidget("step1").config(font="Verdana 16 normal")
