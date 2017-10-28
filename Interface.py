@@ -96,7 +96,6 @@ def takepic(btn):
 
     largePicFile = str(uuid.uuid4())[:4]
     smallPicFile = str(uuid.uuid4())[:4]
-    sequence = ""
 
     if btn == "Picture One":
         sequence = "1"
@@ -155,7 +154,6 @@ def camera(imageName):
     with PiCamera() as camera:
         camera.resolution = (largeImageWidth, largeImageHeight)
         camera.image_effect = 'none'
-        #camera.quality = 50
         camera.start_preview()
         sleep(3)
         camera.capture(folderPath + imageName)
@@ -194,7 +192,39 @@ def sendmail(send_from, send_to, subject, text, files=None, server="smtp.gmail.c
 # create a GUI variable called app
 app = gui("MakerLab Photobooth by Darren", "fullscreen")
 app.setBg("white")
-#app.setFont(12)
+
+#========= Start Email Verification Window ============#
+app.startSubWindow("emailwin", "Enter Email Address", modal=True)
+app.setGeometry(winsize)
+app.setBg("white")
+app.setSticky("nsew")
+
+app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
+app.setBg("white")
+
+app.addValidationEntry("Email Checker", 0, 1)
+app.getEntryWidget("Email Checker").config(font="Verdana 12 normal")
+app.setEntryDefault("Email Checker", "Enter Email Address")
+app.setEntryMaxLength("Email Checker", 100)
+app.setEntryWidth("Email Checker", 50)
+
+app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
+app.setInPadding([30,30])
+
+app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
+app.getLabelWidget("step1").config(font="Verdana 16 normal")
+app.addLabel("step2", "Step 2 - Press the email button to confirm email address.", 2, 0, 2)
+app.getLabelWidget("step2").config(font="Verdana 16 normal")
+app.addLabel("step3", "Step 3 - In the next screen press a camera button (left to right).", 3, 0, 2)
+app.getLabelWidget("step3").config(font="Verdana 16 normal")
+app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 4, 0, 2)
+app.getLabelWidget("step4").config(font="Verdana 16 normal")
+app.addLabel("step5", "When all three pictures are shown, press the refresh button to send the picture.", 5, 0, 2)
+app.getLabelWidget("step5").config(font="Verdana 12 italic")
+app.stopLabelFrame()
+
+app.stopSubWindow()
+#========= Stop Email Verification Window ============#
 
 #========= Start Picture Window ============#
 app.startSubWindow("Picture Viewer", modal=False)
@@ -233,39 +263,7 @@ app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Picture Window ============#
 
-#========= Start Email Verification Window ============#
-app.startSubWindow("emailwin", "Enter Email Address", modal=True)
-app.setGeometry(winsize)
-app.setBg("white")
-app.setSticky("nsew")
-
-app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
-app.setBg("white")
-
-app.addValidationEntry("Email Checker", 0, 1)
-app.getEntryWidget("Email Checker").config(font="Verdana 12 normal")
-app.setEntryDefault("Email Checker", "Enter Email Address")
-app.setEntryMaxLength("Email Checker", 100)
-app.setEntryWidth("Email Checker", 50)
-
-app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
-app.setInPadding([30,30])
-
-app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
-app.getLabelWidget("step1").config(font="Verdana 16 normal")
-app.addLabel("step2", "Step 2 - Press the email button to confirm email address.", 2, 0, 2)
-app.getLabelWidget("step2").config(font="Verdana 16 normal")
-app.addLabel("step3", "Step 3 - In the next screen press a camera button (left to right).", 3, 0, 2)
-app.getLabelWidget("step3").config(font="Verdana 16 normal")
-app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 4, 0, 2)
-app.getLabelWidget("step4").config(font="Verdana 16 normal")
-app.addLabel("step5", "When all three pictures are shown, press the refresh button to send the picture.", 5, 0, 2)
-app.getLabelWidget("step5").config(font="Verdana 12 italic")
-app.stopLabelFrame()
-
-app.stopSubWindow()
-#========= Stop Email Verification Window ============#
-
+#========= Start Reset Window =======================#
 app.startSubWindow("resetwin", "Send Email", modal=True)
 app.setGeometry("250x250")
 app.setBg("white")
@@ -279,6 +277,7 @@ app.addIconButton("Reload Interface", resetwins, "mail", 0, 0)
 app.stopLabelFrame()
 
 app.stopSubWindow()
+#========= Stop Reset Window =======================#
 
 # start the GUI
 app.showSplash("MakerLab Photobooth by Darren", fill='white', stripe='black', fg='white', font=33)
