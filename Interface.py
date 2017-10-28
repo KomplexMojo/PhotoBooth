@@ -210,17 +210,27 @@ app.setEntryDefault("Email Checker", "Enter Email Address")
 app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
+app.setSticky("w")
 app.addIconButton("emailbtn", verifyemail, "check", 0, 1)
 app.setInPadding([30,30])
 
+app.setSticky("w")
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
 app.getLabelWidget("step1").config(font="Verdana 16 normal")
+
+app.setSticky("w")
 app.addLabel("step2", "Step 2 - Press the email button to confirm email address.", 2, 0, 2)
 app.getLabelWidget("step2").config(font="Verdana 16 normal")
+
+app.setSticky("w")
 app.addLabel("step3", "Step 3 - In the next screen press a camera button (left to right).", 3, 0, 2)
 app.getLabelWidget("step3").config(font="Verdana 16 normal")
+
+app.setSticky("w")
 app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 4, 0, 2)
 app.getLabelWidget("step4").config(font="Verdana 16 normal")
+
+app.setSticky("w")
 app.addLabel("step5", "When all three pictures are shown, press the refresh button to send the picture.", 5, 0, 2)
 app.getLabelWidget("step5").config(font="Verdana 12 italic")
 app.stopLabelFrame()
