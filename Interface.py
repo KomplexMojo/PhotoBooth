@@ -78,12 +78,12 @@ def verifyemail(button):
 
     addressToVerify = app.getEntry("Email Checker")
     match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
-    addressToVerify = match.group(0)
 
     if match is None:
         app.setEntryInvalid("Email Checker")
         app.setFocus("Email Checker")
     else:
+        addressToVerify = match.group(0)
         app.setEntryValid("Email Checker")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
         folderPath = "/home/pi/Pictures/" + re.sub('[^a-zA-Z0-9]', '_', match.group(0)) + "_" + str(uuid.uuid4())[:4] + "/"
