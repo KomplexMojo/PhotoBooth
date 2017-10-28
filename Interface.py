@@ -44,11 +44,11 @@ winsize="800x470"
 btnPaddingX=50
 btnPaddingY=50
 topPad=0
-sidePad=5
+sidePad=20
 picSmall=""
 picLarge=""
-largeImageWidth=1080
-largeImageHeight=1920
+largeImageWidth=720
+largeImageHeight=960
 
 isValid = False
 emailFolder = ""
@@ -154,7 +154,7 @@ def camera(imageName):
     with PiCamera() as camera:
         camera.resolution = (largeImageWidth, largeImageHeight)
         camera.image_effect = 'none'
-        camera.quality = 50
+        #camera.quality = 50
         camera.start_preview()
         sleep(3)
         camera.capture(folderPath + imageName)
@@ -248,7 +248,7 @@ app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
 app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
-app.setButtonPadding("emailbtn", [10, 10])
+app.setButtonPadding("emailbtn", [30, 30])
 
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
 app.getLabelWidget("step1").config(font="Verdana 16 normal")
