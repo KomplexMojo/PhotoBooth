@@ -131,7 +131,7 @@ def resetwins(btn):
     app.showSubWindow("emailwin")
     app.hideSubWindow("Picture Viewer")
     app.clearEntry("Email Checker", callFunction=False, setFocus=True)
-    app.setEntryWaitingValidaiton("Email Checker")
+    app.setEntryInvalid("Email Checker")
     app.hideImage("img1")
     app.hideImage("img2")
     app.hideImage("img3")
