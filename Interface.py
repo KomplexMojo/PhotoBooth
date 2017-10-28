@@ -82,6 +82,7 @@ def verifyemail(button):
 
     if match is None:
         app.setEntryInvalid("Email Checker")
+        app.setFocus("Email Checker")
     else:
         app.setEntryValid("Email Checker")
         fileName = re.sub('[^a-zA-Z0-9]', '_', match.group(0))
