@@ -232,7 +232,7 @@ app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Picture Window ============#
 
-#========= Start Email Window ============#
+#========= Start Email Verification Window ============#
 app.startSubWindow("emailwin", "Enter Email Address", modal=True)
 app.setGeometry(winsize)
 app.setBg("white")
@@ -248,7 +248,7 @@ app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
 app.addIconButton("emailbtn", verifyemail, "check", 0, 2)
-app.setButtonPadding("emailbtn", [30, 30])
+app.setInButtonPadding("emailbtn", [20, 20])
 
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
 app.getLabelWidget("step1").config(font="Verdana 16 normal")
@@ -263,7 +263,7 @@ app.getLabelWidget("step5").config(font="Verdana 12 italic")
 app.stopLabelFrame()
 
 app.stopSubWindow()
-#========= Stop Email Window ============#
+#========= Stop Email Verification Window ============#
 
 app.startSubWindow("resetwin", "Send Email", modal=True)
 app.setGeometry("250x250")
