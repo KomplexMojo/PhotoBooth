@@ -154,6 +154,7 @@ def camera(imageName):
     with PiCamera() as camera:
         camera.resolution = (largeImageWidth, largeImageHeight)
         camera.image_effect = 'none'
+        camera.quality = 50
         camera.start_preview()
         sleep(3)
         camera.capture(folderPath + imageName)
