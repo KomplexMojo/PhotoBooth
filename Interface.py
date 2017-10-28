@@ -105,6 +105,8 @@ def takepic(btn):
         app.hideButton("Picture One")
         app.reloadImage("img1", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img1")
+        app.disableButton("Picture One")
+        app.enableButton("Picture Two")
     elif btn == "Picture Two":
         sequence = "2"
         camera(largePicFile + sequence + ".png")
@@ -112,6 +114,8 @@ def takepic(btn):
         app.hideButton("Picture Two")
         app.reloadImage("img2", folderPath + smallPicFile + sequence + ".gif")
         app.showImage("img2")
+        app.disableButton("Picture Two")
+        app.enableButton("Picture Three")
     elif btn == "Picture Three":
         sequence = "3"
         camera(largePicFile + sequence + ".png")
@@ -138,6 +142,9 @@ def resetwins(btn):
     app.showButton("Picture One")
     app.showButton("Picture Two")
     app.showButton("Picture Three")
+    app.enableButton("Picture One")
+    app.disableButton("Picture Two")
+    app.disableButton("Picture Three")
     files[:] = []
 
 
@@ -262,6 +269,7 @@ app.setBg("white")
 app.addIconButton("Picture Two", takepic, "md-camera-photo", 0, 1)
 app.addImage("img2", "/home/pi/PhotoBooth/SourceImages/default_small.gif", 0, 1)
 app.hideImage("img2")
+app.disableButton("Picture Two")
 app.stopLabelFrame()
 
 app.setSticky("ns")
@@ -272,6 +280,7 @@ app.setBg("white")
 app.addIconButton("Picture Three", takepic, "md-camera-photo", 0, 2)
 app.addImage("img3", "/home/pi/PhotoBooth/SourceImages/default_small.gif", 0, 2)
 app.hideImage("img3")
+app.disableButton("Picture Three")
 app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Picture Window ============#
