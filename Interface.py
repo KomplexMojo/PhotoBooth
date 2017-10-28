@@ -141,7 +141,7 @@ def resetwins(btn):
 
 def resize(original, small):
     image = Image.open(folderPath + original)
-    image.thumbnail((int(largeImageWidth*.2), int(largeImageHeight*2)), Image.ANTIALIAS)
+    image.thumbnail((int(largeImageWidth*.3), int(largeImageHeight*3)), Image.ANTIALIAS)
     image.save(folderPath + small, 'GIF', quality=50)
 
 
@@ -265,14 +265,14 @@ app.stopLabelFrame()
 app.stopSubWindow()
 #========= Stop Email Window ============#
 
-app.startSubWindow("resetwin", "Reset Window", modal=True)
+app.startSubWindow("resetwin", "Send Email", modal=True)
 app.setGeometry("250x250")
 app.setBg("white")
 
-app.startLabelFrame("Reset Window", 0, 0)
+app.startLabelFrame("Send", 0, 0)
 
 app.setInPadding([btnPaddingX, btnPaddingY])
-app.setPadding([sidePad, topPad])
+app.setPadding([20, 20])
 app.setSticky("nsew")
 app.addIconButton("Reload Interface", resetwins, "mail", 0, 0)
 app.stopLabelFrame()
