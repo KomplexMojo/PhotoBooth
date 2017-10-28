@@ -219,7 +219,7 @@ app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email ad
 app.getLabelWidget("step1").config(font="Verdana 16 normal")
 
 app.setSticky("w")
-app.addLabel("step2", "Step 2 - Press the email button to confirm email address.", 2, 0, 2)
+app.addLabel("step2", "Step 2 - Press the check mark to confirm email address.", 2, 0, 2)
 app.getLabelWidget("step2").config(font="Verdana 16 normal")
 
 app.setSticky("w")
@@ -227,11 +227,11 @@ app.addLabel("step3", "Step 3 - In the next screen press a camera button (left t
 app.getLabelWidget("step3").config(font="Verdana 16 normal")
 
 app.setSticky("w")
-app.addLabel("step4", "Step 4 - Pose for 3 seconds.", 4, 0, 2)
+app.addLabel("step4", "Step 4 - Pose for 3 seconds. Then press the next button.", 4, 0, 2)
 app.getLabelWidget("step4").config(font="Verdana 16 normal")
 
 app.setSticky("w")
-app.addLabel("step5", "When all three pictures are shown, press the refresh button to send the picture.", 5, 0, 2)
+app.addLabel("step5", "When all three pictures are shown, press the email button to send the picture.", 5, 0, 2)
 app.getLabelWidget("step5").config(font="Verdana 12 italic")
 app.stopLabelFrame()
 
