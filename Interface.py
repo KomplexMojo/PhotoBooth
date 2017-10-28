@@ -203,6 +203,7 @@ app.setSticky("nsew")
 app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
 app.setBg("white")
 
+app.setInPadding([10,10])
 app.addValidationEntry("Email Checker", 0, 0)
 app.getEntryWidget("Email Checker").config(font="Verdana 12 normal")
 app.setEntryDefault("Email Checker", "Enter Email Address")
