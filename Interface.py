@@ -203,13 +203,13 @@ app.setSticky("nsew")
 app.startLabelFrame("Enter Your Email Address to Receive Pictures", 0, 0)
 app.setBg("white")
 
-app.addValidationEntry("Email Checker", 0, 1)
+app.addValidationEntry("Email Checker", 0, 0)
 app.getEntryWidget("Email Checker").config(font="Verdana 12 normal")
 app.setEntryDefault("Email Checker", "Enter Email Address")
 app.setEntryMaxLength("Email Checker", 100)
 app.setEntryWidth("Email Checker", 50)
 
-app.addIconButton("emailbtn", verifyemail, "check", 1, 1, 2, 2)
+app.addIconButton("emailbtn", verifyemail, "check", 0, 1)
 app.setInPadding([30,30])
 
 app.addLabel("step1", "Step 1 - Use the attached keyboard to enter your email address.", 1, 0, 2)
